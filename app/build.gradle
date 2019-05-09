@@ -1,0 +1,63 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.swpu.funchat"
+        minSdkVersion 23
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility = '1.8'
+        targetCompatibility = '1.8'
+    }
+    buildToolsVersion = '28.0.3'
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    //兼容包
+    implementation 'androidx.appcompat:appcompat:1.1.0-alpha04'
+
+    //材料设计
+    implementation 'com.google.android.material:material:1.1.0-alpha06'
+    implementation 'androidx.fragment:fragment:1.1.0-alpha07'
+
+    //约束布局
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha5'
+
+    //测试
+    testImplementation 'junit:junit:4.13-beta-2'
+    androidTestImplementation 'androidx.test:runner:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+
+    //android注解
+    implementation 'androidx.annotation:annotation:1.1.0-beta01'
+
+    //数据库相关的包
+    implementation "androidx.room:room-runtime:2.1.0-alpha07"
+    annotationProcessor "androidx.room:room-compiler:2.1.0-alpha07"
+    implementation "androidx.room:room-rxjava2:2.1.0-alpha07"
+
+    //图片加载框架
+    implementation 'com.github.bumptech.glide:glide:4.9.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
+
+    //网络加载框架
+    implementation 'com.squareup.retrofit2:retrofit:2.5.0'
+
+    //RxJava  用于流式编程
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.8'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+
+}
