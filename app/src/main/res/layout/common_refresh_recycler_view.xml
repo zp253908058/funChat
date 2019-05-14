@@ -4,9 +4,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/home_refresh_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="消息页面" />
+        android:layout_height="match_parent">
+
+        <include layout="@layout/common_recycler_view" />
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 </LinearLayout>

@@ -1,7 +1,9 @@
 package com.swpu.funchat.ui.home;
 
+import android.content.Context;
 import android.os.Bundle;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.swpu.funchat.R;
 import com.swpu.funchat.base.BaseActivity;
@@ -28,7 +30,9 @@ import java.util.Map;
  * @see HomeActivity
  * @since 2019-05-09
  */
+@Route(path = "/activity/home")
 public class HomeActivity extends ToolbarActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
+
 
     private SparseArrayCompat<Fragment> mFragmentHolder;
 
