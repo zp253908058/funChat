@@ -1,5 +1,8 @@
 package com.swpu.funchat.ui.home.adapter;
 
+import android.widget.ImageView;
+import android.widget.TextView;
+
 import androidx.annotation.Nullable;
 
 import com.swpu.funchat.R;
@@ -34,6 +37,11 @@ public class ContactAdapter extends RecyclerAdapter<ContactEntity> {
 
     @Override
     protected void onBindViewHolder(RecyclerViewHolder holder, int position, ContactEntity item) {
+        ImageView avatar = holder.get(R.id.contact_avatar);
+        TextView name = holder.get(R.id.contact_name);
 
+        if (item != null) {
+            name.setText(item.getName());
+        }
     }
 }

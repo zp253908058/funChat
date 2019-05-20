@@ -1,4 +1,4 @@
-package com.swpu.funchat.ui.home;
+package com.swpu.funchat.ui.home.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,10 +8,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModel;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
-import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -44,7 +41,7 @@ public class ContactFragment extends BaseFragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mViewModel = ViewModelProviders.of(this).get(ContactViewModel.class);
+        mViewModel = ViewModelProviders.of(requireActivity()).get(ContactViewModel.class);
         mAdapter = new ContactAdapter(null);
     }
 
@@ -60,8 +57,12 @@ public class ContactFragment extends BaseFragment {
         recyclerView.addItemDecoration(new ContactDecoration(requireContext()));
         recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
         recyclerView.setAdapter(mAdapter);
+    }
 
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
         Observer<List<ContactEntity>> observer = contactEntities -> mAdapter.setItems(contactEntities);
-        mViewModel.getContacts().observe(this, observer);
+        mViewModel.getContactsLiveData().observe(this, observer);
     }
 }

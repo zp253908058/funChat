@@ -1,25 +1,20 @@
 package com.swpu.funchat.ui.home;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 
-import com.alibaba.android.arouter.facade.annotation.Route;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.navigation.NavController;
+import androidx.navigation.NavDestination;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.NavigationUI;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.swpu.funchat.R;
-import com.swpu.funchat.base.BaseActivity;
 import com.swpu.funchat.base.ToolbarActivity;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.annotation.NonNull;
-import androidx.collection.SparseArrayCompat;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-
-import android.view.MenuItem;
-import android.widget.TextView;
-
-import java.util.Map;
 
 /**
  * Class description:
@@ -30,82 +25,47 @@ import java.util.Map;
  * @see HomeActivity
  * @since 2019-05-09
  */
-@Route(path = "/activity/home")
-public class HomeActivity extends ToolbarActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
+public class HomeActivity extends ToolbarActivity implements NavController.OnDestinationChangedListener {
 
+    public static void go(Context context) {
+        Intent intent = new Intent();
+        intent.setClass(context, HomeActivity.class);
+        context.startActivity(intent);
+    }
 
-    private SparseArrayCompat<Fragment> mFragmentHolder;
+    private NavController mNavController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        initView();
-    }
-
-    /**
-     * 初始化组件
-     */
-    private void initView() {
         showNavigationIcon(false);
-        mFragmentHolder = new SparseArrayCompat<>();
 
-        BottomNavigationView navView = findViewById(R.id.nav_view);
-        navView.setOnNavigationItemSelectedListener(this);
-        selectFragment(navView.getSelectedItemId());
+        if (savedInstanceState == null) {
+            setupBottomNavigationBar();
+        }
     }
 
     @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        selectFragment(item.getItemId());
-        return true;
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        setupBottomNavigationBar();
     }
 
-    /**
-     * 显示对应的Fragment
-     *
-     * @param id 点击BottomNavigationView对应Item的id
-     */
-    private void selectFragment(int id) {
-        FragmentManager manager = getSupportFragmentManager();
-        FragmentTransaction transaction = manager.beginTransaction();
-        Fragment fragment = getFragment(id);
-        transaction.replace(R.id.home_container, fragment, String.valueOf(id));
-        transaction.commitAllowingStateLoss();
+    private void setupBottomNavigationBar() {
+        BottomNavigationView bottomNavigationView = findViewById(R.id.nav_view);
+        mNavController = Navigation.findNavController(this, R.id.home_nav_host_fragment);
+        mNavController.addOnDestinationChangedListener(this);
+        NavigationUI.setupWithNavController(bottomNavigationView, mNavController);
+        bottomNavigationView.setSelectedItemId(R.id.message_fragment);
+        bottomNavigationView.setOnNavigationItemSelectedListener(item -> NavigationUI.onNavDestinationSelected(item, mNavController));
     }
 
-    /**
-     * 获取Fragment
-     *
-     * @param id 点击BottomNavigationView对应Item的id
-     * @return 返回与id对应的Fragment
-     */
-    private Fragment getFragment(int id) {
-        Fragment fragment = mFragmentHolder.get(id);
-        if (fragment == null) {
-            fragment = createFragment(id);
-            mFragmentHolder.put(id, fragment);
-        }
-        return fragment;
-
-    }
-
-    /**
-     * 创建Fragment
-     *
-     * @param id 点击BottomNavigationView对应Item的id
-     * @return 返回与id对应的Fragment
-     */
-    private Fragment createFragment(int id) {
-        switch (id) {
-            case R.id.navigation_message:
-                return MessageFragment.newInstance();
-            case R.id.navigation_contact:
-                return ContactFragment.newInstance();
-            case R.id.navigation_user:
-            default:
-                return UserFragment.newInstance();
+    @Override
+    public void onDestinationChanged(@NonNull NavController controller, @NonNull NavDestination destination, @Nullable Bundle arguments) {
+        CharSequence label = destination.getLabel();
+        if (!TextUtils.isEmpty(label)) {
+            setTitle(label.toString());
         }
     }
 }

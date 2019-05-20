@@ -3,4 +3,7 @@
     <string name="title_message">消息</string>
     <string name="title_contact">联系人</string>
     <string name="title_user">我</string>
+
+    <string name="label_sign_in">登录</string>
+    <string name="label_register">注册</string>
 </resources>

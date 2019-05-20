@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/home_navigation"
+    app:startDestination="@+id/message_fragment">
+
+    <fragment
+        android:id="@+id/message_fragment"
+        android:name="com.swpu.funchat.ui.home.fragment.MessageFragment"
+        android:label="@string/title_message" >
+    </fragment>
+
+    <fragment
+        android:id="@+id/contact_fragment"
+        android:name="com.swpu.funchat.ui.home.fragment.ContactFragment"
+        android:label="@string/title_contact" />
+
+    <fragment
+        android:id="@+id/user_fragment"
+        android:name="com.swpu.funchat.ui.home.fragment.UserFragment"
+        android:label="@string/title_user" />
+
+
+</navigation>

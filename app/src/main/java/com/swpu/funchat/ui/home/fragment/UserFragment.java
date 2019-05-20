@@ -1,4 +1,4 @@
-package com.swpu.funchat.ui.home;
+package com.swpu.funchat.ui.home.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
