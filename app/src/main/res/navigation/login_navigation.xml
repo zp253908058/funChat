@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.swpu.funchat.ui.sign.LoginFragment"
+        android:name="com.swpu.funchat.ui.sign.fragment.LoginFragment"
         android:label="登录">
         <action
             android:id="@+id/action_loginFragment_to_registerFragment"
@@ -15,6 +15,6 @@
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
-        android:name="com.swpu.funchat.ui.sign.RegisterFragment"
+        android:name="com.swpu.funchat.ui.sign.fragment.RegisterFragment"
         android:label="注册" />
 </navigation>

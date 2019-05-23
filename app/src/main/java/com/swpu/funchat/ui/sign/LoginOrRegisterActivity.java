@@ -16,6 +16,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.swpu.funchat.R;
+import com.swpu.funchat.base.NavigationActivity;
 import com.swpu.funchat.base.ToolbarActivity;
 import com.swpu.funchat.vm.UserViewModel;
 
@@ -27,7 +28,7 @@ import com.swpu.funchat.vm.UserViewModel;
  * @see LoginOrRegisterActivity
  * @since 2019-05-17
  */
-public class LoginOrRegisterActivity extends ToolbarActivity implements NavController.OnDestinationChangedListener {
+public class LoginOrRegisterActivity extends NavigationActivity implements NavController.OnDestinationChangedListener {
 
     private static final String TAG = LoginOrRegisterActivity.class.getSimpleName();
 
@@ -37,22 +38,13 @@ public class LoginOrRegisterActivity extends ToolbarActivity implements NavContr
         context.startActivity(intent);
     }
 
-    private NavController mNavController;
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.navigation_layout);
 
+        setGraph(R.navigation.login_navigation);
         showNavigationIcon(false);
 
-        if (savedInstanceState == null) {
-            setup();
-        }
-    }
-
-    private void setup() {
-        mNavController = Navigation.findNavController(this, R.id.navigation_host_fragment);
         mNavController.addOnDestinationChangedListener(this);
     }
 

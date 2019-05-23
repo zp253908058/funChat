@@ -1,4 +1,4 @@
-package com.swpu.funchat.ui.sign;
+package com.swpu.funchat.ui.sign.fragment;
 
 import com.swpu.funchat.base.BaseFragment;
 

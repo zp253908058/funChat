@@ -1,4 +1,4 @@
-package com.swpu.funchat.ui.sign;
+package com.swpu.funchat.ui.sign.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,7 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-import androidx.navigation.ui.NavigationUI;
 
 import com.swpu.funchat.R;
 import com.swpu.funchat.base.BaseFragment;
@@ -41,12 +40,5 @@ public class LoginFragment extends BaseFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         mNavController = Navigation.findNavController(view);
-        Button button = view.findViewById(R.id.button_login);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mNavController.navigate(R.id.action_loginFragment_to_registerFragment);
-            }
-        });
     }
 }
