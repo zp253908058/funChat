@@ -41,7 +41,10 @@ public class ContactViewModel extends ViewModel {
         mContactsLiveData = new MediatorLiveData<>();
         mContactsLiveData.setValue(null);
         mContactRepository = new ContactRepository();
-        Disposable disposable = mContactRepository.getContacts().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(contacts -> mContactsLiveData.setValue(contacts), throwable -> Log.e(TAG, "获取联系人失败！"));
+        Disposable disposable = mContactRepository.getContacts().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(contacts -> mContactsLiveData.setValue(contacts), throwable -> {
+            Log.e(TAG, "获取联系人失败！");
+            throwable.printStackTrace();
+        });
         mDisposable.add(disposable);
         Log.e(TAG, "创建了实例");
     }

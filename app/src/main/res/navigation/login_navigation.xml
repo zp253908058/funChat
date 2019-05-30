@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/login_navigation"
-    app:startDestination="@id/loginFragment">
+    app:startDestination="@id/loginFragment"
+    tools:ignore="UnusedNavigation">
 
     <fragment
         android:id="@+id/loginFragment"
@@ -10,11 +12,17 @@
         android:label="登录">
         <action
             android:id="@+id/action_loginFragment_to_registerFragment"
-            app:destination="@id/registerFragment"
-            />
+            app:destination="@id/registerFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_phoneLoginFragment"
+            app:destination="@id/phoneLoginFragment" />
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
         android:name="com.swpu.funchat.ui.sign.fragment.RegisterFragment"
         android:label="注册" />
+    <fragment
+        android:id="@+id/phoneLoginFragment"
+        android:name="com.swpu.funchat.ui.sign.fragment.PhoneLoginFragment"
+        android:label="手机注册" />
 </navigation>

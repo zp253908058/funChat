@@ -15,12 +15,6 @@ import com.swpu.funchat.model.MessageEntity;
  * @since 2019-05-09
  */
 public class MessageFragment extends RecyclerViewFragment <MessageEntity>{
-
-    public static MessageFragment newInstance() {
-        return new MessageFragment();
-    }
-
-
     @Override
     protected void onRecyclerViewCreated(RecyclerView view) {
 

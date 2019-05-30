@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -40,5 +41,7 @@ public class LoginFragment extends BaseFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         mNavController = Navigation.findNavController(view);
+        TextView register = view.findViewById(R.id.login_register);
+        register.setOnClickListener(v -> mNavController.navigate(R.id.action_loginFragment_to_registerFragment));
     }
 }

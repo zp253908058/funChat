@@ -4,21 +4,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavController;
 import androidx.navigation.NavDestination;
-import androidx.navigation.Navigation;
-import androidx.navigation.fragment.NavHostFragment;
 
 import com.swpu.funchat.R;
 import com.swpu.funchat.base.NavigationActivity;
-import com.swpu.funchat.base.ToolbarActivity;
-import com.swpu.funchat.vm.UserViewModel;
 
 /**
  * Class description:
@@ -28,7 +21,7 @@ import com.swpu.funchat.vm.UserViewModel;
  * @see LoginOrRegisterActivity
  * @since 2019-05-17
  */
-public class LoginOrRegisterActivity extends NavigationActivity implements NavController.OnDestinationChangedListener {
+public class LoginOrRegisterActivity extends NavigationActivity {
 
     private static final String TAG = LoginOrRegisterActivity.class.getSimpleName();
 
@@ -44,15 +37,10 @@ public class LoginOrRegisterActivity extends NavigationActivity implements NavCo
 
         setGraph(R.navigation.login_navigation);
         showNavigationIcon(false);
-
-        mNavController.addOnDestinationChangedListener(this);
     }
 
     @Override
-    public void onDestinationChanged(@NonNull NavController controller, @NonNull NavDestination destination, @Nullable Bundle arguments) {
-        CharSequence title = destination.getLabel();
-        if (!TextUtils.isEmpty(title)) {
-            mToolbar.setTitle(title);
-        }
+    public int getGraph() {
+        return R.navigation.login_navigation;
     }
 }

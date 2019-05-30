@@ -31,9 +31,6 @@ import java.util.List;
  * @since 2019-05-09
  */
 public class ContactFragment extends BaseFragment {
-    public static ContactFragment newInstance() {
-        return new ContactFragment();
-    }
 
     private ContactAdapter mAdapter;
     private ContactViewModel mViewModel;

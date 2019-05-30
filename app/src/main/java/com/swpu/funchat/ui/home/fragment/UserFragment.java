@@ -22,10 +22,6 @@ import com.swpu.funchat.base.BaseFragment;
  */
 public class UserFragment extends BaseFragment {
 
-    public static UserFragment newInstance() {
-        return new UserFragment();
-    }
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
