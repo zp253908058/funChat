@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/home_user_head"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/normal_margin"
+        android:background="@android:color/white"
+        android:padding="@dimen/normal_padding">
+
+        <com.swpu.funchat.widget.RadiusImageView
+            android:id="@+id/home_user_avatar"
+            android:layout_width="@dimen/user_avatar_side"
+            android:layout_height="@dimen/user_avatar_side"
+            android:src="@drawable/ic_default_avatar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:radius="@dimen/user_avatar_radius" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/home_user_name"
+            style="@style/TextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/normal_margin"
+            app:layout_constraintStart_toEndOf="@+id/home_user_avatar"
+            app:layout_constraintTop_toTopOf="@+id/home_user_avatar"
+            tools:text="张三" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/home_user_account"
+            style="@style/TextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/normal_margin"
+            app:layout_constraintBottom_toBottomOf="@+id/home_user_avatar"
+            app:layout_constraintStart_toEndOf="@+id/home_user_avatar"
+            tools:text="趣聊号:11111111" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_indicator_arrow_right"
+            android:tint="@color/icon_tint_color"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.swpu.funchat.widget.ImageTextView
+        android:id="@+id/home_user_setting"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/option_item_height"
+        android:layout_marginTop="@dimen/normal_margin"
+        android:background="@drawable/background_item_ripple"
+        android:paddingStart="@dimen/inner_padding"
+        android:paddingEnd="@dimen/inner_padding"
+        android:src="@drawable/ic_settings"
+        android:text="@string/text_setting"
+        android:textColor="@color/text_color"
+        android:tint="@android:color/holo_blue_dark"
+        app:image_height="@dimen/icon_side"
+        app:image_width="@dimen/icon_side"
+        app:isShowIndicator="true"
+        tools:ignore="RtlSymmetry" />
+</LinearLayout>

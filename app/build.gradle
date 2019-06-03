@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-
+apply plugin: 'com.google.protobuf'
 android {
     compileSdkVersion 28
     defaultConfig {
@@ -9,13 +9,6 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        vectorDrawables.useSupportLibrary = true
-
-        javaCompileOptions {
-            annotationProcessorOptions {
-                arguments = [AROUTER_MODULE_NAME: project.getName()]
-            }
-        }
     }
     buildTypes {
         release {
@@ -28,58 +21,85 @@ android {
         targetCompatibility = '1.8'
     }
     buildToolsVersion = '28.0.3'
+
+    sourceSets {
+        main {
+            proto {
+                //main目录新建proto目录
+                srcDir 'src/main/proto'
+                include '**/*.proto'
+            }
+            java {
+                srcDir 'src/main/java'
+            }
+        }
+    }
+}
+
+//构建task
+protobuf {
+    protoc {
+        artifact = 'com.google.protobuf:protoc:3.8.0'
+    }
+
+    generateProtoTasks {
+        all().each { task ->
+            task.builtins {
+                remove java
+            }
+            task.builtins {
+                java {}
+                // Add cpp output without any option.
+                // DO NOT omit the braces if you want this builtin to be added.
+                cpp {}
+            }
+        }
+    }
+    //生成目录
+    generatedFilesBaseDir = "$projectDir/src/generated"
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-
     //兼容包
     implementation 'androidx.appcompat:appcompat:1.1.0-alpha05'
-
     //材料设计
-    implementation 'com.google.android.material:material:1.1.0-alpha06'
-    implementation 'androidx.fragment:fragment:1.1.0-alpha08'
-
+    implementation 'com.google.android.material:material:1.1.0-alpha07'
+    implementation 'androidx.fragment:fragment:1.1.0-alpha09'
     //约束布局
     implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta1'
-
     //测试
     testImplementation 'junit:junit:4.13-beta-2'
-    androidTestImplementation 'androidx.test:runner:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
-
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     //android注解
     implementation 'androidx.annotation:annotation:1.1.0-rc01'
-
     //数据库相关的包
-    implementation "androidx.room:room-runtime:2.1.0-beta01"
-    annotationProcessor "androidx.room:room-compiler:2.1.0-beta01"
-    implementation "androidx.room:room-rxjava2:2.1.0-beta01"
-
+    implementation "androidx.room:room-runtime:2.1.0-rc01"
+    annotationProcessor "androidx.room:room-compiler:2.1.0-rc01"
+    implementation "androidx.room:room-rxjava2:2.1.0-rc01"
     //图片加载框架
     implementation 'com.github.bumptech.glide:glide:4.9.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
-
     //网络加载框架
     implementation 'com.squareup.retrofit2:retrofit:2.5.0'
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.5.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
-
     //RxJava  用于流式编程
     implementation 'io.reactivex.rxjava2:rxjava:2.2.8'
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
-
     //LiveData
     implementation 'androidx.lifecycle:lifecycle-runtime:2.0.0'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
     annotationProcessor 'androidx.lifecycle:lifecycle-compiler:2.0.0'
     implementation 'androidx.lifecycle:lifecycle-common-java8:2.0.0'
-
     //Navigation导航
     implementation 'androidx.navigation:navigation-runtime:2.1.0-alpha04'
     implementation 'androidx.navigation:navigation-fragment:2.1.0-alpha04'
     implementation 'androidx.navigation:navigation-ui:2.1.0-alpha04'
-
+    //消息协议库
     implementation 'com.google.protobuf:protobuf-java:3.8.0'
+    implementation 'com.google.protobuf:protoc:3.8.0'
+    //json解析库
     implementation 'com.alibaba:fastjson:1.2.58'
 }

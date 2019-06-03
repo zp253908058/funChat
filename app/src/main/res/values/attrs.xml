@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="RadiusImageView">
+        <attr name="radius" format="dimension" />
+        <attr name="left_topRadius" format="dimension" />
+        <attr name="right_topRadius" format="dimension" />
+        <attr name="left_bottomRadius" format="dimension" />
+        <attr name="right_bottomRadius" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="ImageTextView">
+        <attr name="android:src" />
+        <attr name="android:tint" />
+        <attr name="image_width" format="dimension"/>
+        <attr name="image_height" format="dimension"/>
+        <attr name="android:text" />
+        <attr name="android:textColor" />
+        <attr name="isShowIndicator" format="boolean" />
+    </declare-styleable>
+</resources>

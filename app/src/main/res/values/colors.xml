@@ -14,6 +14,8 @@
     <color name="text_color_secondary">#FF757575</color>
     <color name="tab_text_color">#FFCCCCCC</color>
 
+    <color name="icon_tint_color">#949393</color>
+
     <color name="red_50">#FFfde0dc</color>
     <color name="red_100">#FFf9bdbb</color>
     <color name="red_200">#FFf69988</color>

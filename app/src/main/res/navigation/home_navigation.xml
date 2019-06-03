@@ -6,18 +6,18 @@
 
     <fragment
         android:id="@+id/message_fragment"
-        android:name="com.swpu.funchat.ui.home.fragment.MessageFragment"
+        android:name="com.swpu.funchat.ui.home.fragment.HomeMessageFragment"
         android:label="@string/title_message" >
     </fragment>
 
     <fragment
         android:id="@+id/contact_fragment"
-        android:name="com.swpu.funchat.ui.home.fragment.ContactFragment"
+        android:name="com.swpu.funchat.ui.home.fragment.HomeContactFragment"
         android:label="@string/title_contact" />
 
     <fragment
         android:id="@+id/user_fragment"
-        android:name="com.swpu.funchat.ui.home.fragment.UserFragment"
+        android:name="com.swpu.funchat.ui.home.fragment.HomeUserFragment"
         android:label="@string/title_user" />
 
 

@@ -1,20 +1,12 @@
 package com.swpu.funchat.repository;
 
-import android.util.Log;
-
 import com.swpu.funchat.datasource.net.Network;
 import com.swpu.funchat.datasource.net.api.ContactService;
 import com.swpu.funchat.model.ContactEntity;
-import com.swpu.funchat.util.ChineseNameGenerator;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import io.reactivex.BackpressureStrategy;
 import io.reactivex.Flowable;
-import io.reactivex.FlowableEmitter;
-import io.reactivex.FlowableOnSubscribe;
-import io.reactivex.functions.Function;
 
 /**
  * Class description:

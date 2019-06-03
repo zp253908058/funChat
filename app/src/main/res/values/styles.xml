@@ -54,4 +54,9 @@
         <item name="android:textColor">@android:color/white</item>
     </style>
 
+    <style name="TextViewStyle" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">@dimen/normal_text_size</item>
+        <item name="android:textColor">@color/text_color</item>
+    </style>
+
 </resources>
