@@ -38,7 +38,7 @@ public class ImageTextView extends LinearLayoutCompat {
 
     private void init(Context context, AttributeSet attrs, int defStyleAttr) {
         super.setOrientation(HORIZONTAL);
-        mIconView = new ImageView(context);
+        mIconView = new RadiusImageView(context);
         mIconView.setContentDescription(null);
         mIconView.setScaleType(ImageView.ScaleType.FIT_XY);
         LayoutParams iconParams = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);

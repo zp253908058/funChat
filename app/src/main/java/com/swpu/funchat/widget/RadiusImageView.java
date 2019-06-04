@@ -14,7 +14,7 @@ import com.swpu.funchat.R;
 public class RadiusImageView extends AppCompatImageView {
 
     private static final String TAG = RadiusImageView.class.getSimpleName();
-
+    //圆角半径
     private int mRadius = 0;
     private int mLeftTopRadius;
     private int mRightTopRadius;
@@ -35,6 +35,14 @@ public class RadiusImageView extends AppCompatImageView {
         init(context, attrs, defStyleAttr);
     }
 
+    /**
+     * 逻辑：如果mRadius 的值不为0，则只使用mRadius的值
+     * 否则使用其他四个圆角的半径
+     *
+     * @param context      context
+     * @param attrs        attrs
+     * @param defStyleAttr def
+     */
     private void init(Context context, AttributeSet attrs, int defStyleAttr) {
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.RadiusImageView, defStyleAttr, 0);
         if (ta.hasValue(R.styleable.RadiusImageView_radius)) {
@@ -61,7 +69,7 @@ public class RadiusImageView extends AppCompatImageView {
             super.onDraw(canvas);
             return;
         }
-        Log.e(TAG, "onDraw...");
+
         //这里做下判断，只有图片的宽高大于设置的圆角距离的时候才进行裁剪
         int maxLeft = Math.max(mLeftTopRadius, mLeftBottomRadius);
         int maxRight = Math.max(mRightTopRadius, mRightBottomRadius);
@@ -84,6 +92,7 @@ public class RadiusImageView extends AppCompatImageView {
         if (realWidth >= minWidth && realHeight >= minHeight) {
             mPath.reset();
             //四个角：右上，右下，左下，左上
+            //定义路径的起点
             float startX = mLeftTopRadius + getPaddingLeft();
             float startY = getPaddingTop();
             mPath.moveTo(startX, startY);

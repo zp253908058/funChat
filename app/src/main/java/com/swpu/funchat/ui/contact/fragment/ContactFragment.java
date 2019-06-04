@@ -1,4 +1,4 @@
-package com.swpu.funchat.ui.home.fragment;
+package com.swpu.funchat.ui.contact.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,20 +11,11 @@ import androidx.annotation.Nullable;
 import com.swpu.funchat.R;
 import com.swpu.funchat.base.BaseFragment;
 
-/**
- * Class description:
- * 用户Fragment
- *
- * @author zp
- * @version 1.0
- * @see UserFragment
- * @since 2019-05-09
- */
-public class UserFragment extends BaseFragment {
+public class ContactFragment extends BaseFragment {
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_user, container, false);
+        return inflater.inflate(R.layout.fragment_contact, container, false);
     }
 }
