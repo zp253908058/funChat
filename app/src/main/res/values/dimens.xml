@@ -26,5 +26,6 @@
 
     <dimen name="icon_side">40dp</dimen>
     <dimen name="user_avatar_side">64dp</dimen>
-    <dimen name="user_avatar_radius">28dp</dimen>
+    <dimen name="user_avatar_radius">8dp</dimen>
+    <dimen name="index_bar_width">32dp</dimen>
 </resources>

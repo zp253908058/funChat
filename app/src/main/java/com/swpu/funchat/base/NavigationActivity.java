@@ -3,11 +3,10 @@ package com.swpu.funchat.base;
 import android.os.Bundle;
 import android.text.TextUtils;
 
-import androidx.annotation.IdRes;
+import androidx.annotation.CallSuper;
 import androidx.annotation.NavigationRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.navigation.NavAction;
 import androidx.navigation.NavController;
 import androidx.navigation.NavDestination;
 import androidx.navigation.NavGraph;
@@ -41,6 +40,7 @@ public abstract class NavigationActivity extends ToolbarActivity implements NavC
     @NavigationRes
     protected abstract int getGraph();
 
+    @CallSuper
     protected void initNavigation(NavController controller) {
         NavDestination current = controller.getCurrentDestination();
         if (current == null) {

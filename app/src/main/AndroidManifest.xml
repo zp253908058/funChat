@@ -45,7 +45,7 @@
 
         <activity
             android:name=".ui.user.UserActivity"
-            android:label="个人信息"
+            android:label="@string/title_personal_info"
             android:screenOrientation="portrait" />
 
         <activity

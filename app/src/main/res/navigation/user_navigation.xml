@@ -1,10 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/user_navigation"
-    app:startDestination="@id/userFragment2">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/user_navigation"
+    app:startDestination="@id/userFragment"
+    tools:ignore="UnusedNavigation">
 
     <fragment
-        android:id="@+id/userFragment2"
+        android:id="@+id/userFragment"
         android:name="com.swpu.funchat.ui.user.fragment.UserFragment"
-        android:label="UserFragment" />
+        android:label="@string/title_personal_info">
+        <action
+            android:id="@+id/action_userFragment_to_avatarChooseFragment"
+            app:destination="@id/avatarChooseFragment" />
+        <action
+            android:id="@+id/action_userFragment_to_updateNicknameFragment"
+            app:destination="@id/updateNicknameFragment" />
+        <action
+            android:id="@+id/action_userFragment_to_dimensionalBarcodeFragment"
+            app:destination="@id/dimensionalBarcodeFragment" />
+        <action
+            android:id="@+id/action_userFragment_to_moreFragment"
+            app:destination="@id/moreFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/avatarChooseFragment"
+        android:name="com.swpu.funchat.ui.user.fragment.AvatarChooseFragment"
+        android:label="@string/title_picture" />
+    <fragment
+        android:id="@+id/updateNicknameFragment"
+        android:name="com.swpu.funchat.ui.user.fragment.UpdateNicknameFragment"
+        android:label="@string/title_update_nickname" />
+    <fragment
+        android:id="@+id/dimensionalBarcodeFragment"
+        android:name="com.swpu.funchat.ui.user.fragment.DimensionalBarcodeFragment"
+        android:label="@string/title_dimensional_barcode" />
+    <fragment
+        android:id="@+id/moreFragment"
+        android:name="com.swpu.funchat.ui.user.fragment.MoreFragment"
+        android:label="@string/title_more" />
 </navigation>

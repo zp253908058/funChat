@@ -63,6 +63,17 @@ public class RadiusImageView extends AppCompatImageView {
     }
 
     @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        // 设置View宽高的测量值
+        setMeasuredDimension(getDefaultSize(0, widthMeasureSpec), getDefaultSize(0, heightMeasureSpec));
+        // 只有setMeasuredDimension调用之后，才能使用getMeasuredWidth()和getMeasuredHeight()来获取视图测量出的宽高，以此之前调用这两个方法得到的值都会是0
+        int side = Math.min(getMeasuredWidth(), getMeasuredHeight());
+        // 高度和宽度一样
+        int spec = MeasureSpec.makeMeasureSpec(side, MeasureSpec.EXACTLY);
+        super.onMeasure(spec, spec);
+    }
+
+    @Override
     protected void onDraw(Canvas canvas) {
         //如果没有设置圆角，什么都不做
         if (mLeftTopRadius == 0 && mRightTopRadius == 0 && mLeftBottomRadius == 0 && mRightBottomRadius == 0) {
@@ -112,5 +123,67 @@ public class RadiusImageView extends AppCompatImageView {
             canvas.save();
         }
         super.onDraw(canvas);
+    }
+
+
+    private void setupRadius() {
+        mLeftTopRadius = mRadius;
+        mRightTopRadius = mRadius;
+        mRightBottomRadius = mRadius;
+        mLeftBottomRadius = mRadius;
+    }
+
+    public int getRadius() {
+        return mRadius;
+    }
+
+    public void setRadius(int mRadius) {
+        this.mRadius = mRadius;
+        setupRadius();
+        invalidate();
+    }
+
+    public int getLeftTopRadius() {
+        return mLeftTopRadius;
+    }
+
+    public void setLeftTopRadius(int leftTopRadius) {
+        mRadius = 0;
+        setupRadius();
+        this.mLeftTopRadius = leftTopRadius;
+        invalidate();
+    }
+
+    public int getRightTopRadius() {
+        return mRightTopRadius;
+    }
+
+    public void setRightTopRadius(int rightTopRadius) {
+        mRadius = 0;
+        setupRadius();
+        mRightTopRadius = rightTopRadius;
+        invalidate();
+    }
+
+    public int getRightBottomRadius() {
+        return mRightBottomRadius;
+    }
+
+    public void setRightBottomRadius(int rightBottomRadius) {
+        mRadius = 0;
+        setupRadius();
+        mRightBottomRadius = rightBottomRadius;
+        invalidate();
+    }
+
+    public int getLeftBottomRadius() {
+        return mLeftBottomRadius;
+    }
+
+    public void setLeftBottomRadius(int leftBottomRadius) {
+        mRadius = 0;
+        setupRadius();
+        mLeftBottomRadius = leftBottomRadius;
+        invalidate();
     }
 }

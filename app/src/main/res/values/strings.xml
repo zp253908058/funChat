@@ -14,4 +14,16 @@
 
     <string name="text_login">登录</string>
     <string name="text_setting">设置</string>
+    <string name="text_avatar">头像</string>
+    <string name="text_nickname">昵称</string>
+    <string name="text_funchat_account">趣聊号</string>
+    <string name="text_dimensional_barcode">二维码名片</string>
+    <string name="text_more">更多</string>
+    <string name="title_personal_info">个人信息</string>
+    <string name="title_picture">图片</string>
+    <string name="title_update_nickname">更改名字</string>
+    <string name="title_dimensional_barcode">二维码名片</string>
+    <string name="title_more">更多</string>
+    <string name="text_new_friend">新的朋友</string>
+    <string name="text_group_chat">群聊</string>
 </resources>
