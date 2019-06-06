@@ -60,12 +60,12 @@ protobuf {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(dir: 'libs', include: ['*.aar', '*.jar'], exclude: [])
     //兼容包
-    implementation 'androidx.appcompat:appcompat:1.1.0-alpha05'
+    implementation 'androidx.appcompat:appcompat:1.1.0-beta01'
     //材料设计
     implementation 'com.google.android.material:material:1.1.0-alpha07'
-    implementation 'androidx.fragment:fragment:1.1.0-alpha09'
+    implementation 'androidx.fragment:fragment:1.1.0-beta01'
     //约束布局
     implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta1'
     //测试
@@ -102,4 +102,5 @@ dependencies {
     implementation 'com.google.protobuf:protoc:3.8.0'
     //json解析库
     implementation 'com.alibaba:fastjson:1.2.58'
+
 }

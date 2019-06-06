@@ -44,6 +44,10 @@
             android:label="联系人" />
 
         <activity
+            android:name=".ui.contact.ContactAddActivity"
+            android:label="@string/title_add_contact" />
+
+        <activity
             android:name=".ui.user.UserActivity"
             android:label="@string/title_personal_info"
             android:screenOrientation="portrait" />

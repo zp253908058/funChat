@@ -1,14 +1,18 @@
 package com.swpu.funchat.ui.home.adapter;
 
-import android.widget.ImageView;
+import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
+import com.bumptech.glide.Glide;
 import com.swpu.funchat.R;
 import com.swpu.funchat.base.RecyclerAdapter;
 import com.swpu.funchat.base.RecyclerViewHolder;
 import com.swpu.funchat.model.ContactEntity;
+import com.swpu.funchat.util.PinyinUtils;
+import com.swpu.funchat.widget.ImageTextView;
 
 import java.util.List;
 
@@ -37,11 +41,45 @@ public class ContactAdapter extends RecyclerAdapter<ContactEntity> {
 
     @Override
     protected void onBindViewHolder(RecyclerViewHolder holder, int position, ContactEntity item) {
-        ImageView avatar = holder.get(R.id.contact_avatar);
-        TextView name = holder.get(R.id.contact_name);
+        TextView tag = holder.get(R.id.contact_tag);
+        ImageTextView contact = holder.get(R.id.contact_contact);
+
+        int section = getSectionForPosition(position);
+        //如果当前位置等于该分类首字母的Char的位置 ，则认为是第一次出现
+        if (position == getPositionForSection(section)) {
+            tag.setVisibility(View.VISIBLE);
+            String name = item != null ? item.getName() : "";
+            tag.setText(String.valueOf(PinyinUtils.getFirstSpell(name).toUpperCase().charAt(0)));
+        } else {
+            tag.setVisibility(View.GONE);
+        }
 
         if (item != null) {
-            name.setText(item.getName());
+            contact.setText(item.getName());
+            Glide.with(holder.itemView).load(item.getAvatar()).into(contact.getIconView());
         }
+    }
+
+    /**
+     * 根据ListView的当前位置获取分类的首字母的char ascii值
+     */
+    public int getSectionForPosition(int position) {
+        ContactEntity entity = getItem(position);
+        String pinyin = PinyinUtils.getPingYin(entity.getName());
+        return pinyin.toUpperCase().charAt(0);
+    }
+
+    /**
+     * 根据分类的首字母的Char ascii值获取其第一次出现该首字母的位置
+     */
+    public int getPositionForSection(int section) {
+        for (int i = 0; i < getItemCount(); i++) {
+            ContactEntity entity = getItem(i);
+            char firstChar = PinyinUtils.getFirstSpell(entity.getName()).toUpperCase().charAt(0);
+            if (firstChar == section) {
+                return i;
+            }
+        }
+        return -1;
     }
 }

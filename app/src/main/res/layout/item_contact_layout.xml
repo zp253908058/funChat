@@ -2,28 +2,32 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="56dp"
-    android:orientation="horizontal">
-
-    <ImageView
-        android:id="@+id/contact_avatar"
-        android:layout_width="48dp"
-        android:layout_height="match_parent"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="12dp"
-        android:layout_marginBottom="4dp"
-        tools:src="@drawable/ic_user_black"
-        tools:tint="@android:color/holo_orange_light" />
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
 
     <TextView
-        android:id="@+id/contact_name"
+        android:id="@+id/contact_tag"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="40dp"
+        android:background="#E0E0E0"
         android:gravity="center_vertical"
-        android:textColor="@android:color/black"
-        android:textSize="24sp"
-        android:textStyle="normal"
-        tools:text="ssss" />
+        android:paddingStart="@dimen/normal_padding"
+        android:paddingEnd="0dp"
+        android:textColor="#454545"
+        tools:text="A" />
+
+    <com.swpu.funchat.widget.ImageTextView
+        android:id="@+id/contact_contact"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/option_item_height"
+        android:background="@drawable/background_item_ripple"
+        android:paddingStart="@dimen/inner_padding"
+        android:paddingEnd="0dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_person_add"
+        android:textColor="@color/text_color"
+        app:image_padding="10dp"
+        app:radius="4dp" />
 
 </LinearLayout>

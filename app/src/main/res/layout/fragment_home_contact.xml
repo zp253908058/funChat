@@ -1,58 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.core.widget.NestedScrollView
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:divider="@drawable/shape_divider"
+            android:orientation="vertical"
+            android:showDividers="middle">
 
-            <LinearLayout
+            <com.swpu.funchat.widget.ImageTextView
+                android:id="@+id/home_contact_add"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:divider="@drawable/shape_divider"
-                android:orientation="vertical"
-                android:showDividers="middle">
+                android:layout_height="@dimen/option_item_height"
+                android:background="@drawable/background_item_ripple"
+                android:paddingStart="@dimen/inner_padding"
+                android:paddingEnd="0dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_person_add"
+                android:text="@string/text_add_friend"
+                android:textColor="@color/text_color"
+                app:image_padding="10dp"
+                app:radius="4dp" />
 
-                <com.swpu.funchat.widget.ImageTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/option_item_height"
-                    android:background="@drawable/background_item_ripple"
-                    android:paddingStart="@dimen/inner_padding"
-                    android:paddingEnd="0dp"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/ic_person_add"
-                    android:text="@string/text_new_friend"
-                    android:textColor="@color/text_color"
-                    app:image_padding="10dp"
-                    app:radius="4dp" />
-
-                <com.swpu.funchat.widget.ImageTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/option_item_height"
-                    android:background="@drawable/background_item_ripple"
-                    android:paddingStart="@dimen/inner_padding"
-                    android:paddingEnd="0dp"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/ic_group"
-                    android:text="@string/text_group_chat"
-                    android:textColor="@color/text_color"
-                    app:image_padding="10dp"
-                    app:radius="4dp" />
-            </LinearLayout>
-
-            <include layout="@layout/common_recycler_view" />
-
+            <com.swpu.funchat.widget.ImageTextView
+                android:id="@+id/home_contact_group_chat"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/option_item_height"
+                android:background="@drawable/background_item_ripple"
+                android:paddingStart="@dimen/inner_padding"
+                android:paddingEnd="0dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_group"
+                android:text="@string/text_group_chat"
+                android:textColor="@color/text_color"
+                app:image_padding="10dp"
+                app:radius="4dp" />
         </LinearLayout>
 
-    </androidx.core.widget.NestedScrollView>
+        <include layout="@layout/common_recycler_view" />
+
+    </LinearLayout>
 
     <com.swpu.funchat.widget.IndexBar
         android:id="@+id/home_contact_index"
@@ -60,6 +56,20 @@
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/home_contact_indicator"
+        android:layout_width="@dimen/option_item_height"
+        android:layout_height="@dimen/option_item_height"
+        android:background="@color/red_600"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/big_text_size"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

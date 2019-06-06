@@ -14,6 +14,8 @@ import androidx.lifecycle.ViewModel;
 import com.swpu.funchat.model.ContactEntity;
 import com.swpu.funchat.repository.ContactRepository;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -41,7 +43,9 @@ public class ContactViewModel extends ViewModel {
         mContactsLiveData = new MediatorLiveData<>();
         mContactsLiveData.setValue(null);
         mContactRepository = new ContactRepository();
-        Disposable disposable = mContactRepository.getContacts().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(contacts -> mContactsLiveData.setValue(contacts), throwable -> {
+        Disposable disposable = mContactRepository.getContacts().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(contacts -> {
+            mContactsLiveData.setValue(contacts);
+        }, throwable -> {
             Log.e(TAG, "获取联系人失败！");
             throwable.printStackTrace();
         });

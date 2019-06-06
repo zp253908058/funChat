@@ -1,5 +1,9 @@
 package com.swpu.funchat.ui.contact;
 
+import android.os.Bundle;
+
+import androidx.annotation.Nullable;
+
 import com.swpu.funchat.base.NavigationActivity;
 
 /**
@@ -14,5 +18,10 @@ public class ContactActivity extends NavigationActivity {
     @Override
     protected int getGraph() {
         return 0;
+    }
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
     }
 }
