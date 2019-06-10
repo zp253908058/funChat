@@ -20,10 +20,7 @@ import com.swpu.funchat.R;
  * @see RecyclerViewFragment
  * @since 2019-05-10
  */
-public abstract class RecyclerViewFragment<T> extends BaseFragment {
-
-    private RecyclerView mRecyclerView;
-    private RecyclerAdapter<T> mAdapter;
+public abstract class RecyclerViewFragment extends BaseFragment {
 
     @Nullable
     @Override
@@ -34,35 +31,9 @@ public abstract class RecyclerViewFragment<T> extends BaseFragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        mRecyclerView = view.findViewById(R.id.recycler_view);
-        onRecyclerViewCreated(mRecyclerView);
+        RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
+        onRecyclerViewCreated(recyclerView);
     }
 
     protected abstract void onRecyclerViewCreated(RecyclerView view);
-
-    public RecyclerView getRecyclerView() {
-        return mRecyclerView;
-    }
-
-    public void setAdapter(RecyclerAdapter<T> adapter) {
-        mAdapter = adapter;
-        Preconditions.checkNotNull(adapter);
-        mRecyclerView.setAdapter(mAdapter);
-    }
-
-    public RecyclerAdapter<T> getAdapter() {
-        return mAdapter;
-    }
-
-    protected void setItemAnimator(@Nullable RecyclerView.ItemAnimator animator) {
-        mRecyclerView.setItemAnimator(animator);
-    }
-
-    protected void setLayoutManager(@Nullable RecyclerView.LayoutManager layout) {
-        mRecyclerView.setLayoutManager(layout);
-    }
-
-    protected void addItemDecoration(@NonNull RecyclerView.ItemDecoration decor) {
-        mRecyclerView.addItemDecoration(decor);
-    }
 }

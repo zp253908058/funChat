@@ -19,7 +19,6 @@ import com.swpu.funchat.base.BaseFragment;
 import com.swpu.funchat.model.ContactEntity;
 import com.swpu.funchat.ui.contact.ContactAddActivity;
 import com.swpu.funchat.ui.home.adapter.ContactAdapter;
-import com.swpu.funchat.ui.home.decoration.ContactDecoration;
 import com.swpu.funchat.vm.ContactViewModel;
 import com.swpu.funchat.widget.IndexBar;
 
