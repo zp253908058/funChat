@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/home_fragment">
+
+    <fragment
+        android:id="@+id/home_fragment"
+        android:name="com.swpu.funchat.ui.home.HomeFragment"
+        tools:layout="@layout/fragment_home">
+
+        <action
+            android:id="@+id/action_home_fragment_to_userFragment"
+            app:destination="@id/userFragment" />
+
+        <action
+            android:id="@+id/action_home_fragment_to_settingFragment"
+            app:destination="@id/settingFragment" />
+        <action
+            android:id="@+id/action_home_fragment_to_contactAddFragment"
+            app:destination="@id/contactAddFragment" />
+        <action
+            android:id="@+id/action_home_fragment_to_groupFragment"
+            app:destination="@id/groupFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/userFragment"
+        android:name="com.swpu.funchat.ui.user.UserFragment"
+        android:label="@string/title_personal_info"
+        tools:layout="@layout/fragment_user">
+        <action
+            android:id="@+id/action_userFragment_to_avatarChooseFragment"
+            app:destination="@id/avatarChooseFragment" />
+        <action
+            android:id="@+id/action_userFragment_to_updateNicknameFragment"
+            app:destination="@id/updateNicknameFragment" />
+        <action
+            android:id="@+id/action_userFragment_to_dimensionalBarcodeFragment"
+            app:destination="@id/dimensionalBarcodeFragment" />
+        <action
+            android:id="@+id/action_userFragment_to_moreFragment"
+            app:destination="@id/moreFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/settingFragment"
+        android:name="com.swpu.funchat.ui.setting.SettingFragment"
+        android:label="@string/text_setting"
+        tools:layout="@layout/fragment_settings" />
+
+    <fragment
+        android:id="@+id/contactAddFragment"
+        android:name="com.swpu.funchat.ui.contact.ContactAddFragment"
+        android:label="@string/title_add_contact"
+        tools:layout="@layout/fragment_contact_add" />
+
+
+    <fragment
+        android:id="@+id/groupFragment"
+        android:name="com.swpu.funchat.ui.contact.GroupFragment"
+        android:label="@string/title_group"
+        tools:layout="@layout/fragment_group">
+        <action
+            android:id="@+id/action_groupFragment_to_generateGroupFragment"
+            app:destination="@id/generateGroupFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/generateGroupFragment"
+        android:name="com.swpu.funchat.ui.contact.GenerateGroupFragment"
+        android:label="@string/title_generate_group"
+        tools:layout="@layout/fragment_generate_group" />
+
+    <fragment
+        android:id="@+id/avatarChooseFragment"
+        android:name="com.swpu.funchat.ui.user.AvatarChooseFragment"
+        android:label="@string/title_picture"
+        tools:layout="@layout/fragment_avatar_choose" />
+
+    <fragment
+        android:id="@+id/updateNicknameFragment"
+        android:name="com.swpu.funchat.ui.user.UpdateNicknameFragment"
+        android:label="@string/title_update_nickname"
+        tools:layout="@layout/fragment_update_nickname" />
+
+    <fragment
+        android:id="@+id/dimensionalBarcodeFragment"
+        android:name="com.swpu.funchat.ui.user.DimensionalBarcodeFragment"
+        android:label="@string/title_dimensional_barcode"
+        tools:layout="@layout/fragment_dimensional_barcode" />
+
+    <fragment
+        android:id="@+id/moreFragment"
+        android:name="com.swpu.funchat.ui.user.MoreFragment"
+        android:label="@string/title_more"
+        tools:layout="@layout/fragment_more" />
+</navigation>

@@ -1,22 +1,13 @@
 package com.swpu.funchat.vm;
 
-import android.app.Application;
-import android.content.Context;
-import android.util.Log;
-import android.widget.TextView;
-
-import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MediatorLiveData;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModel;
 
 import com.swpu.funchat.model.ContactEntity;
 import com.swpu.funchat.repository.ContactRepository;
 
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -34,10 +25,11 @@ import io.reactivex.schedulers.Schedulers;
  */
 public class ContactViewModel extends ViewModel {
 
+    @SuppressWarnings("unused")
     private static final String TAG = ContactViewModel.class.getSimpleName();
 
     private MutableLiveData<List<ContactEntity>> mContactsLiveData;
-    private MediatorLiveData<List<ContactEntity>> mMediatorLiveData;
+    private MediatorLiveData<List<ContactEntity>> mContactsObservable;
     private ContactRepository mContactRepository;
     private CompositeDisposable mDisposable = new CompositeDisposable();
 
@@ -45,35 +37,20 @@ public class ContactViewModel extends ViewModel {
         mContactsLiveData = new MediatorLiveData<>();
         mContactsLiveData.setValue(null);
         mContactRepository = new ContactRepository();
-        mMediatorLiveData = new MediatorLiveData<>();
-        mMediatorLiveData.addSource(mContactsLiveData, new Observer<List<ContactEntity>>() {
-            @Override
-            public void onChanged(List<ContactEntity> contactEntities) {
-                
-            }
-        });
-        Disposable disposable = mContactRepository.getContacts().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(contacts -> {
-            mContactsLiveData.setValue(contacts);
-        }, throwable -> {
-            Log.e(TAG, "获取联系人失败！");
-            throwable.printStackTrace();
-        });
-        mDisposable.add(disposable);
-        Log.e(TAG, "创建了实例");
+        mContactsObservable = new MediatorLiveData<>();
+        mContactsObservable.addSource(mContactsLiveData, mContactsObservable::setValue);
     }
 
-    public MutableLiveData<List<ContactEntity>> getContactsLiveData() {
-        return mContactsLiveData;
+    public void startContactsLoading(){
+        Disposable disposable = mContactRepository.getContacts()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(contacts -> mContactsLiveData.setValue(contacts), Throwable::printStackTrace);
+        mDisposable.add(disposable);
     }
 
-    public void refresh() {
-        Disposable disposable = mContactRepository.getContacts().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(contacts -> {
-            mContactsLiveData.getValue().addAll((contacts));
-        }, throwable -> {
-            Log.e(TAG, "获取联系人失败！");
-            throwable.printStackTrace();
-        });
-        mDisposable.add(disposable);
+    public LiveData<List<ContactEntity>> getContactsLiveData() {
+        return mContactsObservable;
     }
 
     @Override

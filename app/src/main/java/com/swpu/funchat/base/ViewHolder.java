@@ -32,6 +32,9 @@ public class ViewHolder {
 
     @SuppressWarnings("unchecked")
     public <T extends View> T get(@IdRes int resId) {
+        if (mItemView == null) {
+            throw new NullPointerException("item view is null.");
+        }
         View view = mHolder.get(resId);
         if (Validator.isNull(view)) {
             view = mItemView.findViewById(resId);

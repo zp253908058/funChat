@@ -26,7 +26,7 @@
                 android:paddingEnd="0dp"
                 android:scaleType="fitXY"
                 android:src="@drawable/ic_person_add"
-                android:text="@string/text_add_friend"
+                android:text="@string/title_add_contact"
                 android:textColor="@color/text_color"
                 app:image_padding="10dp"
                 app:radius="4dp" />

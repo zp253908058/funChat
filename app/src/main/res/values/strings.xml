@@ -25,7 +25,8 @@
     <string name="title_update_nickname">更改名字</string>
     <string name="title_dimensional_barcode">二维码名片</string>
     <string name="title_more">更多</string>
-    <string name="text_add_friend">新增朋友</string>
     <string name="text_group_chat">群聊</string>
     <string name="title_add_contact">新增联系人</string>
+    <string name="title_generate_group">发起群聊</string>
+    <string name="title_group">群聊</string>
 </resources>

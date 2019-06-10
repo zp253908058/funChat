@@ -14,13 +14,14 @@ import androidx.navigation.NavOptions;
 import androidx.navigation.Navigation;
 import androidx.navigation.Navigator;
 
-public class NavigationFragment extends BaseFragment {
+public abstract class NavigationFragment extends BaseFragment {
 
     private NavController mNavController;
 
     @Override
     @CallSuper
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         mNavController = Navigation.findNavController(view);
     }
 
