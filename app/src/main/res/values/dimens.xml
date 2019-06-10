@@ -23,8 +23,10 @@
     <dimen name="inner_padding">8dp</dimen>
 
     <dimen name="option_item_height">56dp</dimen>
+    <dimen name="message_item_height">72dp</dimen>
 
     <dimen name="icon_side">40dp</dimen>
+    <dimen name="message_avatar_side">56dp</dimen>
     <dimen name="user_avatar_side">64dp</dimen>
     <dimen name="user_avatar_radius">8dp</dimen>
     <dimen name="index_bar_width">32dp</dimen>

@@ -1,4 +1,4 @@
-package com.swpu.funchat.ui.chat.adapter;
+package com.swpu.funchat.ui.contact.adapter;
 
 import android.view.View;
 import android.widget.TextView;
@@ -17,6 +17,7 @@ import java.util.List;
 
 /**
  * Class description:
+ * 联系人列表适配器
  *
  * @author zp
  * @version 1.0

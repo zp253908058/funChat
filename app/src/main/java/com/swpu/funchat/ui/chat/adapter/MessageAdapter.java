@@ -11,6 +11,7 @@ import java.util.List;
 
 /**
  * Class description:
+ * 消息列表适配器
  *
  * @author zp
  * @version 1.0

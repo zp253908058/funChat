@@ -9,6 +9,7 @@ import com.swpu.funchat.ui.NavigationActivity;
 
 /**
  * Class description:
+ * 启动页
  *
  * @author zp
  * @version 1.0

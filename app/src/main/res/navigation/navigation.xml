@@ -23,6 +23,12 @@
         <action
             android:id="@+id/action_home_fragment_to_groupFragment"
             app:destination="@id/groupFragment" />
+        <action
+            android:id="@+id/action_home_fragment_to_contactFragment"
+            app:destination="@id/contactFragment" />
+        <action
+            android:id="@+id/action_home_fragment_to_chatFragment"
+            app:destination="@id/chatFragment" />
 
     </fragment>
 
@@ -97,4 +103,23 @@
         android:name="com.swpu.funchat.ui.user.MoreFragment"
         android:label="@string/title_more"
         tools:layout="@layout/fragment_more" />
+    <fragment
+        android:id="@+id/contactFragment"
+        android:name="com.swpu.funchat.ui.contact.ContactFragment"
+        android:label="@string/title_contact"
+        tools:layout="@layout/fragment_contact"/>
+    <fragment
+        android:id="@+id/chatFragment"
+        android:name="com.swpu.funchat.ui.chat.ChatFragment"
+        android:label="@string/title_message"
+        tools:layout="@layout/fragment_chat">
+        <action
+            android:id="@+id/action_chatFragment_to_chatInfoFragment"
+            app:destination="@id/chatInfoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/chatInfoFragment"
+        android:name="com.swpu.funchat.ui.chat.ChatInfoFragment"
+        android:label="@string/title_chat_info"
+        tools:layout="@layout/fragment_chat_info"/>
 </navigation>

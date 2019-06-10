@@ -11,7 +11,7 @@ import com.swpu.funchat.base.NavigationFragment;
 
 /**
  * Class description:
- * 用户Fragment
+ * 首页我的页面
  *
  * @author zp
  * @version 1.0

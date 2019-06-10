@@ -17,6 +17,7 @@ import com.swpu.funchat.base.ToolbarActivity;
 
 /**
  * Class description:
+ * Host Activity
  *
  * @author zp
  * @version 1.0

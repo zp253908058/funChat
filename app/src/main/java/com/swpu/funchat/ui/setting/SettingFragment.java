@@ -5,6 +5,7 @@ import com.swpu.funchat.base.BaseFragment;
 
 /**
  * Class description:
+ * 设置界面
  *
  * @author zp
  * @version 1.0

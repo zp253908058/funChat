@@ -1,10 +1,5 @@
 package com.swpu.funchat.base;
 
-import android.os.Bundle;
-import android.view.View;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.swpu.funchat.R;
@@ -24,10 +19,8 @@ public abstract class RecyclerViewFragment extends NavigationFragment {
         return R.layout.common_refresh_recycler_view;
     }
 
-
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+    protected void initView() {
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
         onRecyclerViewCreated(recyclerView);
     }

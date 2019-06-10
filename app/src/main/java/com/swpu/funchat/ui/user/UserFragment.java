@@ -13,6 +13,7 @@ import com.swpu.funchat.base.NavigationFragment;
 
 /**
  * Class description:
+ * 用户信息界面
  *
  * @author zp
  * @version 1.0

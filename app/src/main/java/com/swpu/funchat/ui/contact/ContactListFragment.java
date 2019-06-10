@@ -13,8 +13,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.swpu.funchat.R;
 import com.swpu.funchat.base.NavigationFragment;
+import com.swpu.funchat.base.RecyclerViewTouchListener;
 import com.swpu.funchat.model.ContactEntity;
-import com.swpu.funchat.ui.chat.adapter.ContactAdapter;
+import com.swpu.funchat.ui.contact.adapter.ContactAdapter;
 import com.swpu.funchat.vm.ContactViewModel;
 import com.swpu.funchat.widget.IndexBar;
 
@@ -22,14 +23,14 @@ import java.util.List;
 
 /**
  * Class description:
- * 联系人Fragment
+ * 首页联系人列表页面
  *
  * @author zp
  * @version 1.0
  * @see ContactListFragment
  * @since 2019-05-09
  */
-public class ContactListFragment extends NavigationFragment implements View.OnClickListener, IndexBar.OnTouchingLetterChangedListener {
+public class ContactListFragment extends NavigationFragment implements View.OnClickListener, IndexBar.OnTouchingLetterChangedListener, RecyclerViewTouchListener.OnItemClickListener {
 
     private static final String TAG = ContactListFragment.class.getSimpleName();
 
@@ -61,6 +62,7 @@ public class ContactListFragment extends NavigationFragment implements View.OnCl
         mLayoutManager = new LinearLayoutManager(requireContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setAdapter(mAdapter);
+        recyclerView.addOnItemTouchListener(new RecyclerViewTouchListener(requireContext(), this));
 
         TextView indicator = findViewById(R.id.home_contact_indicator);
         IndexBar indexBar = findViewById(R.id.home_contact_index);
@@ -100,5 +102,10 @@ public class ContactListFragment extends NavigationFragment implements View.OnCl
                 navigate(R.id.action_home_fragment_to_groupFragment);
                 break;
         }
+    }
+
+    @Override
+    public void onItemClick(View view, int position) {
+        navigate(R.id.action_home_fragment_to_contactFragment);
     }
 }
