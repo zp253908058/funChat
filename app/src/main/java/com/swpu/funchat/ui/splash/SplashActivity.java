@@ -5,7 +5,7 @@ import android.os.Handler;
 import android.view.View;
 
 import com.swpu.funchat.base.BaseActivity;
-import com.swpu.funchat.ui.NavigationActivity;
+import com.swpu.funchat.ui.sign.activity.LoginNavigationActivity;
 
 /**
  * Class description:
@@ -38,7 +38,7 @@ public class SplashActivity extends BaseActivity implements Runnable {
 
     @Override
     public void run() {
-        NavigationActivity.go(this);
+        LoginNavigationActivity.go(this);
     }
 
     @Override

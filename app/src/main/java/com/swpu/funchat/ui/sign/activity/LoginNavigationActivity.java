@@ -1,4 +1,4 @@
-package com.swpu.funchat.ui;
+package com.swpu.funchat.ui.sign.activity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -17,18 +17,16 @@ import com.swpu.funchat.base.ToolbarActivity;
 
 /**
  * Class description:
- * Host Activity
  *
  * @author zp
  * @version 1.0
- * @see NavigationActivity
- * @since 2019-05-23
+ * @see LoginNavigationActivity
+ * @since 2019-06-16
  */
-public final class NavigationActivity extends ToolbarActivity implements NavController.OnDestinationChangedListener {
-
+public class LoginNavigationActivity extends ToolbarActivity implements NavController.OnDestinationChangedListener{
     public static void go(Context context) {
         Intent intent = new Intent();
-        intent.setClass(context, NavigationActivity.class);
+        intent.setClass(context, LoginNavigationActivity.class);
         context.startActivity(intent);
     }
 
@@ -37,7 +35,7 @@ public final class NavigationActivity extends ToolbarActivity implements NavCont
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_navigation);
+        setContentView(R.layout.activity_login_navigation);
         init();
     }
 
@@ -63,7 +61,7 @@ public final class NavigationActivity extends ToolbarActivity implements NavCont
         if (!TextUtils.isEmpty(title)) {
             mToolbar.setTitle(title);
         }
-        if (destination.getId() == R.id.home_fragment) {
+        if (destination.getId() == R.id.loginFragment) {
             showNavigationIcon(false);
         } else {
             showNavigationIcon(true);

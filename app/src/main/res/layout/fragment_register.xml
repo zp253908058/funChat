@@ -7,36 +7,41 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="56dp"
         android:orientation="vertical"
-        android:padding="@dimen/normal_padding"
+        android:padding="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/register_username_input_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/tip_username" >
+            android:hint="@string/text_phone">
+
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/login_username"
+                android:id="@+id/register_username"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number"
                 android:lines="1"
-                android:maxEms="16"/>
+                android:maxEms="16" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
+
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/register_password_input_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/top_margin"
+            android:layout_marginTop="16dp"
             android:hint="@string/tip_password">
 
+
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/login_password"
+                android:id="@+id/register_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
@@ -45,33 +50,31 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <LinearLayout
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/register_password_confirm_input_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/top_margin"
-            android:orientation="horizontal">
+            android:layout_marginTop="16dp"
+            android:hint="@string/tip_password">
 
-            <CheckBox
-                android:id="@+id/login_retain_password"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/tip_retain_password" />
 
-            <TextView
-                android:id="@+id/login_register"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/register_password_confirm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical|end"
-                android:text="@string/tip_register" />
+                android:inputType="textPassword"
+                android:lines="1"
+                android:maxEms="16" />
 
-        </LinearLayout>
+        </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            android:id="@+id/login_button"
+            android:id="@+id/register_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/top_margin"
-            android:text="@string/text_login" />
+            android:layout_marginTop="16dp"
+            android:text="@string/text_register" />
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

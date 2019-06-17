@@ -8,10 +8,10 @@ import com.swpu.funchat.base.BaseFragment;
  *
  * @author zp
  * @version 1.0
- * @see PhoneLoginFragment
+ * @see CodeLoginFragment
  * @since 2019-05-24
  */
-public class PhoneLoginFragment extends BaseFragment {
+public class CodeLoginFragment extends BaseFragment {
     @Override
     protected int getLayoutResId() {
         return 0;

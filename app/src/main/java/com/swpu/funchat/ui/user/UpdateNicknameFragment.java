@@ -28,4 +28,10 @@ public class UpdateNicknameFragment extends BaseFragment {
     protected void initView() {
         super.initView();
     }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+    }
 }

@@ -27,6 +27,12 @@
 
         <activity android:name=".ui.NavigationActivity" />
 
+        <activity
+            android:name=".ui.sign.activity.LoginNavigationActivity"
+            android:screenOrientation="portrait"
+            android:label="@string/label_sign_in"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize"/>
+
     </application>
 
 </manifest>
