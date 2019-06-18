@@ -106,6 +106,10 @@ public class ContactListFragment extends NavigationFragment implements View.OnCl
 
     @Override
     public void onItemClick(View view, int position) {
-        navigate(R.id.action_home_fragment_to_contactFragment);
+        Bundle bundle = new Bundle();
+        ContactEntity entity = mAdapter.getInfo(position);
+        bundle.putSerializable("contact", entity);
+        navigate(R.id.action_home_fragment_to_contactFragment, bundle);
     }
 }
+

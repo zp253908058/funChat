@@ -82,4 +82,10 @@ public class ContactAdapter extends RecyclerAdapter<ContactEntity> {
         }
         return -1;
     }
+
+    public ContactEntity getInfo(int section) {
+        ContactEntity entity = getItem(section);
+        return entity;
+    }
 }
+

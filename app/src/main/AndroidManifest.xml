@@ -3,6 +3,7 @@
     package="com.swpu.funchat">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
 
     <application
         android:name=".app.FunChatApplication"
@@ -29,9 +30,11 @@
 
         <activity
             android:name=".ui.sign.activity.LoginNavigationActivity"
-            android:screenOrientation="portrait"
             android:label="@string/label_sign_in"
-            android:windowSoftInputMode="stateAlwaysHidden|adjustResize"/>
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
+
+        <activity android:name=".ui.common.SimpleCaptureActivity" />
 
     </application>
 

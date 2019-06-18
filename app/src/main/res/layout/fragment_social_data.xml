@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:divider="@drawable/shape_divider"
+    android:orientation="vertical"
+    android:showDividers="middle">
+
+    <LinearLayout
+        android:id="@+id/social_data_same_contact_group_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/option_item_height"
+        android:background="@android:color/white"
+        android:orientation="horizontal"
+        android:padding="@dimen/normal_padding">
+
+        <TextView
+            style="@style/TextViewStyle.Title"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/title_same_contact_group" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/same_contact_group_count"
+            style="@style/TextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="0个" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/contact_personal_signature_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/option_item_height"
+        android:layout_marginTop="@dimen/normal_margin"
+        android:background="@android:color/white"
+        android:orientation="horizontal"
+        android:padding="@dimen/normal_padding">
+
+        <TextView
+            style="@style/TextViewStyle.Title"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/title_personal_signature" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/personal_signature"
+            style="@style/TextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="有志者事竟成" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/contact_source_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/option_item_height"
+        android:background="@android:color/white"
+        android:orientation="horizontal"
+        android:padding="@dimen/normal_padding">
+
+        <TextView
+            style="@style/TextViewStyle.Title"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/title_source" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/source"
+            style="@style/TextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="通过QQ好友添加" />
+
+    </LinearLayout>
+
+</LinearLayout>

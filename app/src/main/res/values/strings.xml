@@ -38,4 +38,15 @@
     <string name="error_password_empty">密码为空！</string>
     <string name="error_password_too_short">密码低于6位！</string>
     <string name="error_password_inconsistent">密码不一致！</string>
+    <string name="title_message_search">搜索</string>
+
+    <string name="title_note">设置备注和标签</string>
+    <string name="title_same_contact_group">我们的共同群聊</string>
+    <string name="title_more_information">更多信息</string>
+    <string name="title_personal_signature">个性签名</string>
+    <string name="title_send_message">发送消息</string>
+    <string name="title_source">来源</string>
+    <string name="title_social_data">社交资料</string>
+    <string name="title_contact_info_set" >资料</string>
+
 </resources>

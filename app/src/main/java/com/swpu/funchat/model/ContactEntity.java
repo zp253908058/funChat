@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 
 import com.swpu.funchat.util.PinyinUtils;
 
+import java.io.Serializable;
+
 
 /**
  * Class description:
@@ -13,7 +15,7 @@ import com.swpu.funchat.util.PinyinUtils;
  * @see ContactEntity
  * @since 2019-05-14
  */
-public class ContactEntity implements Comparable<ContactEntity> {
+public class ContactEntity implements Comparable<ContactEntity>, Serializable {
 
     private String name;      //名字
     private String avatar;    //头像路径

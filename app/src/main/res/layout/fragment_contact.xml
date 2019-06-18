@@ -1,6 +1,135 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:divider="@drawable/shape_divider"
+    android:orientation="vertical"
+    android:showDividers="middle">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/contact_user_head"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:padding="@dimen/normal_padding">
+
+        <com.swpu.funchat.widget.RadiusImageView
+            android:id="@+id/contact_user_avatar"
+            android:layout_width="@dimen/user_avatar_side"
+            android:layout_height="@dimen/user_avatar_side"
+            android:src="@color/red_600"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:radius="@dimen/user_avatar_radius" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/contact_user_name"
+            style="@style/TextViewStyle.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/normal_margin"
+            android:textSize="@dimen/big_text_size"
+            app:layout_constraintStart_toEndOf="@+id/contact_user_avatar"
+            app:layout_constraintTop_toTopOf="@+id/contact_user_avatar"
+            tools:text="张三" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/contact_user_account"
+            style="@style/TextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/normal_margin"
+            app:layout_constraintBottom_toBottomOf="@+id/contact_user_avatar"
+            app:layout_constraintStart_toEndOf="@+id/contact_user_avatar"
+            tools:text="趣聊号:11111111" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:id="@+id/contact_note_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/option_item_height"
+        android:background="@android:color/white"
+        android:orientation="horizontal"
+        android:padding="@dimen/normal_padding">
+
+        <TextView
+            style="@style/TextViewStyle.Title"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/title_note" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_indicator_arrow_right"
+            android:tint="@color/icon_tint_color" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/contact_more_information_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/option_item_height"
+        android:layout_marginTop="@dimen/normal_margin"
+        android:background="@android:color/white"
+        android:orientation="horizontal"
+        android:padding="@dimen/normal_padding">
+
+        <TextView
+            style="@style/TextViewStyle.Title"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/title_more_information" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_indicator_arrow_right"
+            android:tint="@color/icon_tint_color" />
+
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/contact_send_message_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/option_item_height"
+        android:layout_marginTop="@dimen/normal_margin"
+        android:background="@android:color/white"
+        android:orientation="horizontal"
+        android:padding="@dimen/normal_padding">
+
+        <TextView
+            android:id="@+id/contact_send_message_textView"
+            style="@style/TextViewStyle.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title_send_message"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="@dimen/normal_margin"
+            android:src="@drawable/ic_message"
+            android:tint="@color/colorPrimary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/contact_send_message_textView"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>
