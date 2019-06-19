@@ -1,6 +1,6 @@
 package com.swpu.funchat.repository;
 
-import com.swpu.funchat.datasource.net.Network;
+import com.swpu.funchat.datasource.net.support.Network;
 import com.swpu.funchat.datasource.net.api.ContactService;
 import com.swpu.funchat.model.ContactEntity;
 import com.swpu.funchat.util.ChineseNameGenerator;

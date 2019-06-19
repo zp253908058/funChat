@@ -103,4 +103,6 @@ dependencies {
     //json解析库
     implementation 'com.alibaba:fastjson:1.2.58'
 
+    //日志
+    implementation 'com.orhanobut:logger:2.2.0'
 }

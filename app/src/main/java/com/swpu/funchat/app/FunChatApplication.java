@@ -2,6 +2,8 @@ package com.swpu.funchat.app;
 
 import android.app.Application;
 
+import com.swpu.funchat.util.Logger;
+
 /**
  * Class description:
  *
@@ -15,6 +17,7 @@ public class FunChatApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        Logger.init();
     }
 
     @Override
