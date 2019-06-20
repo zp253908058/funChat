@@ -15,7 +15,7 @@ import okhttp3.OkHttpClient;
 public class AuthorizationNetworkConfiguration extends SimpleNetworkConfiguration {
 
     private static final String TAG = AuthorizationNetworkConfiguration.class.getSimpleName();
-    private static final String BASE_URL = "http://10.29.5.175:8080/im/";
+    private static final String BASE_URL = "http://10.29.4.211:8080/funchat/api/";
     private static final int TIMEOUT = 30;
 
     @Override

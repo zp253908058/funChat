@@ -57,12 +57,13 @@ public class LoginFragment extends NavigationFragment implements View.OnClickLis
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mLoginViewModel.getLoginObservable().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(String s) {
-                if (s != null) {
-                    mLoginViewModel.onLoginSuccess();
-                }
+        mLoginViewModel.getLoginSuccessObservable().observe(this, s -> {
+            if (s == null) {
+                return;
+            }
+            if (s == 200) {
+                loginSuccess();
+                mLoginViewModel.getLoginSuccessObservable().postValue(1);
             }
         });
     }
@@ -120,7 +121,6 @@ public class LoginFragment extends NavigationFragment implements View.OnClickLis
             mPasswordText.requestFocus();
             return;
         }
-
 
         mLoginViewModel.login(username, password);
     }

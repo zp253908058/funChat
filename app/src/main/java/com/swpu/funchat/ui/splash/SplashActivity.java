@@ -39,7 +39,7 @@ public class SplashActivity extends BaseActivity implements Runnable {
 
     @Override
     public void run() {
-        NavigationActivity.go(this);
+        LoginNavigationActivity.go(this);
     }
 
     @Override

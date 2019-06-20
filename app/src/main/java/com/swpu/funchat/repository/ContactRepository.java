@@ -29,23 +29,20 @@ public class ContactRepository {
     private ContactService mContactService;
 
     public ContactRepository() {
-        mContactService = Network.getInstance().getService(ContactService.class);
+        mContactService = Network.getInstance().getAuthorizationService(ContactService.class);
     }
 
     public Flowable<List<ContactEntity>> getContacts() {
-        return Flowable.create(new FlowableOnSubscribe<List<ContactEntity>>() {
-            @Override
-            public void subscribe(FlowableEmitter<List<ContactEntity>> emitter) throws Exception {
-                List<ContactEntity> entities = new ArrayList<>();
-                for (int i = 0; i < 100; i++) {
-                    ContactEntity entity = new ContactEntity();
-                    entity.setName(ChineseNameGenerator.generateName());
-                    entity.setAvatar("http://s2.sinaimg.cn/mw690/006tMk7wzy74ZYrLFux01&690");
-                    entities.add(entity);
-                }
-                Collections.sort(entities);
-                emitter.onNext(entities);
+        return Flowable.create(emitter -> {
+            List<ContactEntity> entities = new ArrayList<>();
+            for (int i = 0; i < 100; i++) {
+                ContactEntity entity = new ContactEntity();
+                entity.setName(ChineseNameGenerator.generateName());
+                entity.setAvatar("http://s2.sinaimg.cn/mw690/006tMk7wzy74ZYrLFux01&690");
+                entities.add(entity);
             }
+            Collections.sort(entities);
+            emitter.onNext(entities);
         }, BackpressureStrategy.BUFFER);
     }
 }
