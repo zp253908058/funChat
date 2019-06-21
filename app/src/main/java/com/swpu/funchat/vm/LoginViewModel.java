@@ -1,6 +1,5 @@
 package com.swpu.funchat.vm;
 
-import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
@@ -15,11 +14,6 @@ import io.reactivex.Flowable;
 import io.reactivex.FlowableSubscriber;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
-import okhttp3.Call;
-import okhttp3.OkHttpClient;
-import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Class description:
@@ -65,6 +59,34 @@ public class LoginViewModel extends ViewModel {
 //        service.login(username, password);
 
         Flowable<UserEntity> login = mUserService.login(username, password);
+        login.observeOn(Schedulers.io())
+                .subscribeOn(AndroidSchedulers.mainThread())
+                .subscribe(new FlowableSubscriber<UserEntity>() {
+                    @Override
+                    public void onSubscribe(Subscription s) {
+                        s.request(Integer.MAX_VALUE);
+                    }
+
+                    @Override
+                    public void onNext(UserEntity userEntity) {
+                        Logger.d(userEntity);
+                        mLoginSuccessObservable.postValue(200);
+                    }
+
+                    @Override
+                    public void onError(Throwable t) {
+                        Logger.e(t.getMessage());
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+
+    public void register(String username, String password){
+        Flowable<UserEntity> login = mUserService.register(username, password);
         login.observeOn(Schedulers.io())
                 .subscribeOn(AndroidSchedulers.mainThread())
                 .subscribe(new FlowableSubscriber<UserEntity>() {

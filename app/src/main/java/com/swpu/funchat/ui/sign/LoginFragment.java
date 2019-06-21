@@ -1,27 +1,20 @@
 package com.swpu.funchat.ui.sign;
 
 import android.os.Bundle;
-import android.os.UserManager;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
-import androidx.navigation.NavController;
 
 import com.swpu.funchat.R;
-import com.swpu.funchat.base.BaseFragment;
 import com.swpu.funchat.base.NavigationFragment;
 import com.swpu.funchat.datasource.storage.preference.SharedPreferenceManager;
 import com.swpu.funchat.datasource.storage.preference.dto.AccountPreference;
-import com.swpu.funchat.model.UserEntity;
 import com.swpu.funchat.util.Validator;
 import com.swpu.funchat.vm.LoginViewModel;
-
-import java.util.logging.Logger;
 
 /**
  * Class description:
@@ -132,8 +125,6 @@ public class LoginFragment extends NavigationFragment implements View.OnClickLis
             mEntity.setPassword("");
         }
 
-        boolean success = mManager.save(requireContext(), mEntity);
-        if (!success) {
-        }
+        mManager.save(requireContext(), mEntity);
     }
 }

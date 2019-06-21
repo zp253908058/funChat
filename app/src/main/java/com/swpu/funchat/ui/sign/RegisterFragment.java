@@ -1,12 +1,16 @@
 package com.swpu.funchat.ui.sign;
 
+import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
+import androidx.annotation.Nullable;
+import androidx.lifecycle.ViewModelProviders;
+
 import com.swpu.funchat.R;
 import com.swpu.funchat.base.BaseFragment;
-import com.swpu.funchat.model.UserEntity;
 import com.swpu.funchat.util.Validator;
+import com.swpu.funchat.vm.LoginViewModel;
 
 /**
  * Class description:
@@ -23,9 +27,17 @@ public class RegisterFragment extends BaseFragment implements View.OnClickListen
     private EditText mPasswordText;
     private EditText mConfirmPasswordText;
 
+    private LoginViewModel mLoginViewModel;
+
     @Override
     protected int getLayoutResId() {
         return R.layout.fragment_register;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mLoginViewModel = ViewModelProviders.of(requireActivity()).get(LoginViewModel.class);
     }
 
     @Override
@@ -71,16 +83,6 @@ public class RegisterFragment extends BaseFragment implements View.OnClickListen
             return;
         }
 
-
-    }
-
-    /**
-     * 注册账号，并增加一个用户
-     *
-     * @param username 账号
-     * @param password 密码
-     */
-    private void register(String username, String password) {
-
+        mLoginViewModel.register(username, password);
     }
 }
