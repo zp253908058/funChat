@@ -23,5 +23,5 @@ public interface UserService {
 
     @POST("sign/up")
     @FormUrlEncoded
-    Flowable<UserEntity> register(@Field("phone") String phone, @Field("password") String password);
+    Flowable<String> register(@Field("phone") String phone, @Field("password") String password);
 }

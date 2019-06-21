@@ -3,6 +3,7 @@ package com.swpu.funchat.app;
 import android.app.Application;
 
 import com.swpu.funchat.util.Logger;
+import com.swpu.funchat.util.Toaster;
 
 /**
  * Class description:
@@ -18,6 +19,7 @@ public class FunChatApplication extends Application {
     public void onCreate() {
         super.onCreate();
         Logger.init();
+        Toaster.initialize(this);
     }
 
     @Override
