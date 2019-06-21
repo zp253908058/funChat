@@ -1,10 +1,14 @@
 package com.swpu.funchat.datasource.net.support;
 
+import androidx.annotation.CallSuper;
+
 import java.util.List;
 import java.util.concurrent.Executor;
+import java.util.concurrent.TimeUnit;
 
 import okhttp3.Call;
 import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.CallAdapter;
 import retrofit2.Converter;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
@@ -19,8 +23,21 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * @since 2019/6/17
  */
 class SimpleNetworkConfiguration implements NetworkConfigurationAdapter {
+
+    private static final int TIMEOUT = 30;
+
     @Override
+    @CallSuper
     public OkHttpClient configure(OkHttpClient.Builder builder) {
+        builder.retryOnConnectionFailure(true);
+//        builder.authenticator(new TokenAuthenticator());
+        builder.connectTimeout(TIMEOUT, TimeUnit.SECONDS);
+        HeaderInterceptor headerInterceptor = new HeaderInterceptor();
+        builder.addInterceptor(headerInterceptor);
+//        builder.addInterceptor(new LoggingInterceptor());
+        HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
+        httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+        builder.addInterceptor(httpLoggingInterceptor);
         return null;
     }
 

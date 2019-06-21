@@ -25,7 +25,7 @@ public class HeaderInterceptor implements Interceptor {
     public Response intercept(@NonNull Chain chain) throws IOException {
         Request originalRequest = chain.request();
         Request.Builder builder = originalRequest.newBuilder();
-        builder.header("Content-Type", "application/json;charset=UTF-8");
+        builder.addHeader("Content-Type", "application/json;charset=UTF-8");
 
 //        AccountPreference entity = mUserManager.get();
 //        if (!entity.isEmpty()) {

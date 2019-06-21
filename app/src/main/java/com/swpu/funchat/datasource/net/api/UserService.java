@@ -1,6 +1,7 @@
 package com.swpu.funchat.datasource.net.api;
 
 import com.swpu.funchat.model.UserEntity;
+import com.swpu.funchat.model.repponse.ResponseMessageEntity;
 
 import io.reactivex.Flowable;
 import retrofit2.http.Field;
@@ -23,5 +24,5 @@ public interface UserService {
 
     @POST("sign/up")
     @FormUrlEncoded
-    Flowable<String> register(@Field("phone") String phone, @Field("password") String password);
+    Flowable<ResponseMessageEntity> register(@Field("phone") String phone, @Field("password") String password);
 }

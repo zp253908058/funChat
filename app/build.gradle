@@ -82,9 +82,9 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.9.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
     //网络加载框架
-    implementation 'com.squareup.retrofit2:retrofit:2.5.0'
-    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.5.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.6.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.6.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.6.0'
     implementation 'com.squareup.okhttp3:logging-interceptor:3.14.2'
     //RxJava  用于流式编程
     implementation 'io.reactivex.rxjava2:rxjava:2.2.8'
@@ -101,8 +101,6 @@ dependencies {
     //消息协议库
     implementation 'com.google.protobuf:protobuf-java:3.8.0'
     implementation 'com.google.protobuf:protoc:3.8.0'
-    //json解析库
-    implementation 'com.alibaba:fastjson:1.2.58'
 
     //日志
     implementation 'com.orhanobut:logger:2.2.0'
