@@ -41,24 +41,13 @@ public class SharedPreferenceManager {
     }
 
     /**
-     * 以{@Context.MODE_PRIVATE}的方式保存
+     * 保存
      *
      * @param context Context
      * @param object  所要保存的实体对象
      */
     public boolean save(Context context, Object object) {
-        return save(context, object, Context.MODE_PRIVATE);
-    }
-
-    /**
-     * 保存
-     *
-     * @param context Context
-     * @param object  所要保存的实体对象
-     * @param mode    保存的方式
-     */
-    public boolean save(Context context, Object object, int mode) {
-        SharedPreferences preferences = getSharedPreferences(context, object, mode);
+        SharedPreferences preferences = getSharedPreferences(context, object);
         try {
             putInSharedPreferences(object, preferences);
             return true;
@@ -68,7 +57,7 @@ public class SharedPreferenceManager {
         }
     }
 
-    private SharedPreferences getSharedPreferences(Context context, Object object, int mode) {
+    private SharedPreferences getSharedPreferences(Context context, Object object) {
         Annotation[] annotations = object.getClass().getAnnotations();
         Preference preference = null;
         for (Annotation annotation : annotations) {
@@ -78,15 +67,15 @@ public class SharedPreferenceManager {
             }
         }
         if (preference == null) {
-            throw new IllegalArgumentException(object.getClass().getSimpleName() + "类必须使用@SharedPreference注解。");
+            throw new IllegalArgumentException(object.getClass().getSimpleName() + "类必须使用@Preference注解。");
         }
 
         String name = preference.name();
         if (Validator.isEmpty(name)) {
-            throw new IllegalArgumentException("@SharedPreference注解name属性不能为空。");
+            throw new IllegalArgumentException("@Preference注解name属性不能为空。");
         }
 
-        return context.getSharedPreferences(name, mode);
+        return context.getSharedPreferences(name, Context.MODE_PRIVATE);
     }
 
     private void putInSharedPreferences(Object object, SharedPreferences sp) throws IllegalAccessException {
@@ -142,11 +131,7 @@ public class SharedPreferenceManager {
     }
 
     public boolean load(Context context, Object object) {
-        return load(context, object, Context.MODE_PRIVATE);
-    }
-
-    public boolean load(Context context, Object object, int mode) {
-        SharedPreferences preferences = getSharedPreferences(context, object, mode);
+        SharedPreferences preferences = getSharedPreferences(context, object);
         try {
             loadInSharedPreferences(object, preferences);
             return true;

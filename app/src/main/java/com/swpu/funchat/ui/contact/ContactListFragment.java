@@ -79,7 +79,7 @@ public class ContactListFragment extends NavigationFragment implements View.OnCl
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         Observer<List<ContactEntity>> observer = contactEntities -> mAdapter.setItems(contactEntities);
-        mViewModel.getContactsLiveData().observe(this, observer);
+        mViewModel.getContactsObservable().observe(this, observer);
     }
 
     @Override

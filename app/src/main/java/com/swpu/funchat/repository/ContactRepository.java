@@ -1,7 +1,7 @@
 package com.swpu.funchat.repository;
 
 import com.swpu.funchat.datasource.net.support.Network;
-import com.swpu.funchat.datasource.net.api.ContactService;
+import com.swpu.funchat.datasource.net.api.ContactApiService;
 import com.swpu.funchat.model.ContactEntity;
 import com.swpu.funchat.util.ChineseNameGenerator;
 
@@ -11,8 +11,6 @@ import java.util.List;
 
 import io.reactivex.BackpressureStrategy;
 import io.reactivex.Flowable;
-import io.reactivex.FlowableEmitter;
-import io.reactivex.FlowableOnSubscribe;
 
 /**
  * Class description:
@@ -26,10 +24,10 @@ public class ContactRepository {
 
     private static final String TAG = ContactRepository.class.getSimpleName();
 
-    private ContactService mContactService;
+    private ContactApiService mContactApiService;
 
     public ContactRepository() {
-        mContactService = Network.getInstance().getAuthorizationService(ContactService.class);
+        mContactApiService = Network.getInstance().getAuthorizationService(ContactApiService.class);
     }
 
     public Flowable<List<ContactEntity>> getContacts() {

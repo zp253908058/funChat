@@ -4,12 +4,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.widget.Toast;
 
 import androidx.annotation.CallSuper;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavController;
 import androidx.navigation.NavDestination;
@@ -18,7 +16,8 @@ import androidx.navigation.Navigation;
 import com.swpu.funchat.R;
 import com.swpu.funchat.base.ToolbarActivity;
 import com.swpu.funchat.ui.NavigationActivity;
-import com.swpu.funchat.vm.LoginViewModel;
+import com.swpu.funchat.util.Toaster;
+import com.swpu.funchat.vm.SignViewModel;
 
 /**
  * Class description:
@@ -36,20 +35,20 @@ public class LoginNavigationActivity extends ToolbarActivity implements NavContr
     }
 
     protected NavController mNavController;
-    private LoginViewModel mLoginViewModel;
+    private SignViewModel mSignViewModel;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_navigation);
         init();
-        mLoginViewModel = ViewModelProviders.of(this).get(LoginViewModel.class);
-        mLoginViewModel.getLoginSuccessObservable().observe(this, integer -> {
+        mSignViewModel = ViewModelProviders.of(this).get(SignViewModel.class);
+        mSignViewModel.getLoginSuccessObservable().observe(this, integer -> {
             if (integer == null) {
                 return;
             }
             if (integer == 1) {
-                Toast.makeText(getApplicationContext(), "登录成功", Toast.LENGTH_SHORT).show();
+                Toaster.showToast("登录成功");
                 NavigationActivity.go(LoginNavigationActivity.this);
                 finish();
             }

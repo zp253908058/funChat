@@ -17,7 +17,7 @@
         android:paddingStart="@dimen/normal_padding"
         android:paddingTop="@dimen/inner_padding"
         android:paddingEnd="@dimen/normal_padding"
-        android:paddingBottom="@dimen/inner_padding" >
+        android:paddingBottom="@dimen/inner_padding">
 
         <TextView
             style="@style/TextViewStyle.Title"
@@ -30,6 +30,7 @@
             android:id="@+id/user_avatar"
             android:layout_width="@dimen/user_avatar_side"
             android:layout_height="@dimen/user_avatar_side"
+            android:scaleType="centerCrop"
             android:src="@color/red_400"
             app:radius="@dimen/user_avatar_radius" />
 

@@ -23,6 +23,7 @@
     <string name="text_funchat_account">趣聊号</string>
     <string name="text_dimensional_barcode">二维码名片</string>
     <string name="text_more">更多</string>
+    <string name="text_save">保存</string>
     <string name="title_personal_info">个人信息</string>
     <string name="title_picture">图片</string>
     <string name="title_update_nickname">更改名字</string>
@@ -48,5 +49,9 @@
     <string name="title_source">来源</string>
     <string name="title_social_data">社交资料</string>
     <string name="title_contact_info_set" >资料</string>
+
+    <string name="tip_fun_chat_account">趣聊号:</string>
+
+    <string name="tip_update_nickname">好的名字可以让你的朋友更容易记住你</string>
 
 </resources>

@@ -1,5 +1,6 @@
 package com.swpu.funchat.datasource.net.support;
 
+import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
 
 /**
@@ -21,7 +22,10 @@ public class AuthorizationNetworkConfiguration extends SimpleNetworkConfiguratio
     }
 
     @Override
-    public String baseUrl() {
-        return BASE_URL;
+    protected HttpUrl.Builder buildUrl(HttpUrl.Builder builder) {
+        super.buildUrl(builder);
+        builder.addEncodedPathSegment("api");
+        builder.addEncodedPathSegment("");
+        return builder;
     }
 }

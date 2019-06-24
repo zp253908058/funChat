@@ -1,15 +1,17 @@
 package com.swpu.funchat.ui.user;
 
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.lifecycle.ViewModelProviders;
 
+import com.bumptech.glide.Glide;
 import com.swpu.funchat.R;
 import com.swpu.funchat.base.NavigationFragment;
+import com.swpu.funchat.vm.UserViewModel;
+import com.swpu.funchat.widget.RadiusImageView;
 
 /**
  * Class description:
@@ -22,28 +24,40 @@ import com.swpu.funchat.base.NavigationFragment;
  */
 public class UserFragment extends NavigationFragment implements View.OnClickListener {
 
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_user, container, false);
-    }
-
     @Override
     protected int getLayoutResId() {
-        return 0;
+        return R.layout.fragment_user;
+    }
+
+    private UserViewModel mUserViewModel;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mUserViewModel = ViewModelProviders.of(requireActivity()).get(UserViewModel.class);
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        View avatarLayout = view.findViewById(R.id.user_avatar_layout);
+    protected void initView() {
+        super.initView();
+        View avatarLayout = findViewById(R.id.user_avatar_layout);
         avatarLayout.setOnClickListener(this);
-        View nicknameLayout = view.findViewById(R.id.user_nickname_layout);
+        View nicknameLayout = findViewById(R.id.user_nickname_layout);
         nicknameLayout.setOnClickListener(this);
-        View dimensionalBarcodeLayout = view.findViewById(R.id.user_dimensional_barcode_layout);
+        View dimensionalBarcodeLayout = findViewById(R.id.user_dimensional_barcode_layout);
         dimensionalBarcodeLayout.setOnClickListener(this);
-        View moreLayout = view.findViewById(R.id.user_more_layout);
+        View moreLayout = findViewById(R.id.user_more_layout);
         moreLayout.setOnClickListener(this);
+
+        mUserViewModel.getUserObservable().observe(this, userEntity -> {
+            TextView name = findViewById(R.id.user_nickname);
+            TextView account = findViewById(R.id.user_funchat_account);
+            RadiusImageView avatar = findViewById(R.id.user_avatar);
+
+            name.setText(userEntity.getNickname());
+            account.setText(String.valueOf(userEntity.getUserId()));
+            Glide.with(UserFragment.this).load(userEntity.getAvatar()).into(avatar);
+        });
     }
 
     @Override

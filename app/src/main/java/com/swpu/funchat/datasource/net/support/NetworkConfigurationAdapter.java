@@ -3,6 +3,7 @@ package com.swpu.funchat.datasource.net.support;
 import java.util.List;
 import java.util.concurrent.Executor;
 
+import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
 import retrofit2.CallAdapter;
 import retrofit2.Converter;
@@ -21,7 +22,7 @@ public interface NetworkConfigurationAdapter {
 
     okhttp3.Call.Factory callFactory();
 
-    String baseUrl();
+    HttpUrl baseUrl();
 
     Executor callbackExecutor();
 

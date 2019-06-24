@@ -18,6 +18,7 @@
             android:id="@+id/home_user_avatar"
             android:layout_width="@dimen/user_avatar_side"
             android:layout_height="@dimen/user_avatar_side"
+            android:scaleType="centerCrop"
             android:src="@color/red_600"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -35,14 +36,23 @@
             tools:text="张三" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/home_user_account"
+            android:id="@+id/home_user_tip_account"
             style="@style/TextViewStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/normal_margin"
+            android:text="@string/tip_fun_chat_account"
             app:layout_constraintBottom_toBottomOf="@+id/home_user_avatar"
-            app:layout_constraintStart_toEndOf="@+id/home_user_avatar"
-            tools:text="趣聊号:11111111" />
+            app:layout_constraintStart_toEndOf="@+id/home_user_avatar" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/home_user_account"
+            style="@style/TextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/home_user_tip_account"
+            app:layout_constraintStart_toEndOf="@+id/home_user_tip_account"
+            tools:text="11111111" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="wrap_content"

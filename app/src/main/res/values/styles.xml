@@ -74,4 +74,11 @@
         <item name="android:textColor">@color/text_color_secondary</item>
     </style>
 
+    <style name="EditTextStyle" parent="Widget.AppCompat.EditText">
+        <item name="colorControlNormal">@color/colorAccent</item>
+        <item name="colorControlActivated">@color/colorAccent</item>
+        <item name="android:textColor">@color/text_color</item>
+        <item name="android:textSize">@dimen/normal_text_size</item>
+    </style>
+
 </resources>

@@ -12,7 +12,7 @@ import okhttp3.OkHttpClient;
  */
 public class GeneralNetworkConfiguration extends SimpleNetworkConfiguration {
     private static final String TAG = AuthorizationNetworkConfiguration.class.getSimpleName();
-    private static final String BASE_URL = "http://localhost:8080/funchat/";
+    private static final String HOST = "192.168.1.28";
     private static final int TIMEOUT = 30;
 
     @Override
@@ -20,10 +20,4 @@ public class GeneralNetworkConfiguration extends SimpleNetworkConfiguration {
         super.configure(builder);
         return builder.build();
     }
-
-    @Override
-    public String baseUrl() {
-        return BASE_URL;
-    }
-
 }

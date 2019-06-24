@@ -8,9 +8,9 @@ import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.swpu.funchat.R;
-import com.swpu.funchat.base.BaseFragment;
+import com.swpu.funchat.base.NavigationFragment;
 import com.swpu.funchat.util.Validator;
-import com.swpu.funchat.vm.LoginViewModel;
+import com.swpu.funchat.vm.SignViewModel;
 
 /**
  * Class description:
@@ -21,13 +21,13 @@ import com.swpu.funchat.vm.LoginViewModel;
  * @see RegisterFragment
  * @since 2019-05-21
  */
-public class RegisterFragment extends BaseFragment implements View.OnClickListener {
+public class RegisterFragment extends NavigationFragment implements View.OnClickListener {
 
     private EditText mUsernameText;
     private EditText mPasswordText;
     private EditText mConfirmPasswordText;
 
-    private LoginViewModel mLoginViewModel;
+    private SignViewModel mSignViewModel;
 
     @Override
     protected int getLayoutResId() {
@@ -37,7 +37,8 @@ public class RegisterFragment extends BaseFragment implements View.OnClickListen
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mLoginViewModel = ViewModelProviders.of(requireActivity()).get(LoginViewModel.class);
+        mSignViewModel = ViewModelProviders.of(this).get(SignViewModel.class);
+        mSignViewModel.addOnResponseListener(SignViewModel.KEY_REGISTER_RESPONSE_LISTENER, () -> getNavController().navigateUp());
     }
 
     @Override
@@ -83,6 +84,6 @@ public class RegisterFragment extends BaseFragment implements View.OnClickListen
             return;
         }
 
-        mLoginViewModel.register(username, password);
+        mSignViewModel.register(username, password);
     }
 }

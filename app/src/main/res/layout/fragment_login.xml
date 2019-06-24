@@ -55,7 +55,8 @@
                 android:id="@+id/login_retain_password"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/tip_retain_password" />
+                android:text="@string/tip_retain_password"
+                android:checked="true"/>
 
             <TextView
                 android:id="@+id/login_register"

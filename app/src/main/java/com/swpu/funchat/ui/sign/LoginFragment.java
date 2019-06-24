@@ -10,11 +10,14 @@ import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.swpu.funchat.R;
+import com.swpu.funchat.base.BaseActivity;
 import com.swpu.funchat.base.NavigationFragment;
+import com.swpu.funchat.datasource.cache.UserService;
 import com.swpu.funchat.datasource.storage.preference.SharedPreferenceManager;
 import com.swpu.funchat.datasource.storage.preference.dto.AccountPreference;
+import com.swpu.funchat.util.Logger;
 import com.swpu.funchat.util.Validator;
-import com.swpu.funchat.vm.LoginViewModel;
+import com.swpu.funchat.vm.SignViewModel;
 
 /**
  * Class description:
@@ -34,12 +37,13 @@ public class LoginFragment extends NavigationFragment implements View.OnClickLis
     private SharedPreferenceManager mManager = SharedPreferenceManager.getInstance();
     private AccountPreference mEntity = new AccountPreference();
 
-    private LoginViewModel mLoginViewModel;
+    private SignViewModel mSignViewModel;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mLoginViewModel = ViewModelProviders.of(requireActivity()).get(LoginViewModel.class);
+        mSignViewModel = ViewModelProviders.of(requireActivity()).get(SignViewModel.class);
+        mSignViewModel.addOnResponseListener(SignViewModel.KEY_LOGIN_RESPONSE_LISTENER, this::loginSuccess);
     }
 
     @Override
@@ -50,14 +54,22 @@ public class LoginFragment extends NavigationFragment implements View.OnClickLis
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mLoginViewModel.getLoginSuccessObservable().observe(this, s -> {
+        mSignViewModel.getLoginSuccessObservable().observe(this, s -> {
             if (s == null) {
                 return;
             }
             if (s == 200) {
                 loginSuccess();
-                mLoginViewModel.getLoginSuccessObservable().postValue(1);
+                mSignViewModel.getLoginSuccessObservable().postValue(1);
             }
+        });
+        mSignViewModel.getUserObservable().observe(this, userEntity -> {
+            BaseActivity activity = (BaseActivity) requireActivity();
+            UserService service = activity.getAppService(UserService.class);
+            if (service == null) {
+                return;
+            }
+            service.setUserEntity(userEntity);
         });
     }
 
@@ -75,6 +87,10 @@ public class LoginFragment extends NavigationFragment implements View.OnClickLis
         mCheckBox = findViewById(R.id.login_retain_password);
 
         boolean success = mManager.load(requireContext(), mEntity);
+
+        Logger.d(success);
+        Logger.d(mEntity);
+
         if (success) {
             mUsernameText.setText(mEntity.getUsername());
             mPasswordText.setText(mEntity.getPassword());
@@ -115,7 +131,10 @@ public class LoginFragment extends NavigationFragment implements View.OnClickLis
             return;
         }
 
-        mLoginViewModel.login(username, password);
+        mEntity.setUsername(username);
+        mEntity.setPassword(password);
+
+        mSignViewModel.login(username, password);
     }
 
     private void loginSuccess() {
@@ -126,5 +145,11 @@ public class LoginFragment extends NavigationFragment implements View.OnClickLis
         }
 
         mManager.save(requireContext(), mEntity);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mSignViewModel.removeOnResponseListener(SignViewModel.KEY_LOGIN_RESPONSE_LISTENER);
     }
 }

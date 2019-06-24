@@ -13,10 +13,10 @@ import retrofit2.http.POST;
  *
  * @author zp
  * @version 1.0
- * @see UserService
+ * @see UserApiService
  * @since 2019-06-20
  */
-public interface UserService {
+public interface UserApiService {
 
     @POST("sign/phone")
     @FormUrlEncoded
@@ -25,4 +25,8 @@ public interface UserService {
     @POST("sign/up")
     @FormUrlEncoded
     Flowable<ResponseMessageEntity> register(@Field("phone") String phone, @Field("password") String password);
+
+    @POST("user/update/nickname")
+    @FormUrlEncoded
+    Flowable<ResponseMessageEntity> updateNickname(@Field("id") long id, @Field("nickname") String nickname);
 }

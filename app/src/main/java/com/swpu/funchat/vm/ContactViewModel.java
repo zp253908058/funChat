@@ -49,7 +49,7 @@ public class ContactViewModel extends ViewModel {
         mDisposable.add(disposable);
     }
 
-    public LiveData<List<ContactEntity>> getContactsLiveData() {
+    public LiveData<List<ContactEntity>> getContactsObservable() {
         return mContactsObservable;
     }
 

@@ -8,12 +8,16 @@ import android.text.TextUtils;
 import androidx.annotation.CallSuper;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavController;
 import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
 
 import com.swpu.funchat.R;
 import com.swpu.funchat.base.ToolbarActivity;
+import com.swpu.funchat.datasource.cache.AppServiceRegistry;
+import com.swpu.funchat.datasource.cache.UserService;
+import com.swpu.funchat.vm.UserViewModel;
 
 /**
  * Class description:
@@ -45,6 +49,10 @@ public final class NavigationActivity extends ToolbarActivity implements NavCont
         mNavController = Navigation.findNavController(this, R.id.navigation_host_fragment);
         initNavigation(mNavController);
         mNavController.addOnDestinationChangedListener(this);
+
+        UserViewModel userViewModel = ViewModelProviders.of(this).get(UserViewModel.class);
+        UserService service = (UserService) getAppService(AppServiceRegistry.USER_SERVICE);
+        userViewModel.setUser(service.getUserEntity());
     }
 
     @CallSuper

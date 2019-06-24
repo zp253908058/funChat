@@ -7,6 +7,7 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.Call;
+import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.CallAdapter;
@@ -24,6 +25,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 class SimpleNetworkConfiguration implements NetworkConfigurationAdapter {
 
+    private static final String WINDOWS_HOST = "192.168.1.28";
+    private static final String MAC_HOST = "192.168.1.28";
+    private static final String HOST = WINDOWS_HOST;
     private static final int TIMEOUT = 30;
 
     @Override
@@ -47,8 +51,18 @@ class SimpleNetworkConfiguration implements NetworkConfigurationAdapter {
     }
 
     @Override
-    public String baseUrl() {
-        return null;
+    public HttpUrl baseUrl() {
+        return buildUrl(new HttpUrl.Builder()).build();
+    }
+
+    @CallSuper
+    protected HttpUrl.Builder buildUrl(HttpUrl.Builder builder) {
+        builder.scheme("http");
+        builder.port(80);
+        builder.host(HOST);
+        builder.addEncodedPathSegment("funchat");
+        builder.addPathSegment("");
+        return builder;
     }
 
     @Override
