@@ -13,12 +13,14 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.swpu.funchat.R;
+import com.swpu.funchat.base.GridItemDecoration;
 import com.swpu.funchat.base.NavigationFragment;
 import com.swpu.funchat.ui.image.adapter.FolderAdapter;
 import com.swpu.funchat.ui.image.adapter.ImageAdapter;
@@ -103,6 +105,7 @@ public class ImageChooseFragment extends NavigationFragment {
         mImageAdapter = new ImageAdapter();
         RecyclerView recyclerView = findViewById(R.id.image_recycler_view);
         recyclerView.setLayoutManager(new GridLayoutManager(requireContext(), 3));
+        recyclerView.addItemDecoration(new GridItemDecoration(requireContext()));
         recyclerView.setAdapter(mImageAdapter);
     }
 

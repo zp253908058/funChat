@@ -27,7 +27,8 @@ class SimpleNetworkConfiguration implements NetworkConfigurationAdapter {
 
     private static final String WINDOWS_HOST = "192.168.1.28";
     private static final String MAC_HOST = "10.29.1.142";
-    private static final String HOST = MAC_HOST;
+    private static final String SERVER_HOST = "47.106.84.158";
+    private static final String HOST = SERVER_HOST;
     private static final int TIMEOUT = 30;
 
     @Override
