@@ -20,6 +20,8 @@ import androidx.recyclerview.widget.RecyclerView;
  */
 public class GridItemDecoration extends RecyclerView.ItemDecoration {
     private static final int[] ATTRS = new int[]{android.R.attr.listDivider};
+
+
     private Drawable mDivider;
 
     public GridItemDecoration(Context context) {
