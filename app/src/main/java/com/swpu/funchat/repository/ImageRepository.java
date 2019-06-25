@@ -8,12 +8,20 @@ import android.provider.MediaStore;
 
 import com.swpu.funchat.model.FolderEntity;
 import com.swpu.funchat.model.ImageEntity;
+import com.swpu.funchat.util.Logger;
 import com.swpu.funchat.util.Validator;
 
 import java.io.File;
+import java.net.URI;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+
+import io.reactivex.BackpressureStrategy;
+import io.reactivex.Flowable;
+import io.reactivex.FlowableEmitter;
+import io.reactivex.FlowableOnSubscribe;
 
 /**
  * Class description:
@@ -24,68 +32,57 @@ import java.util.List;
  * @since 2019/6/24
  */
 public class ImageRepository {
+
+    private static final String[] PROJECTION = {MediaStore.Images.Media.DATA,
+            MediaStore.Images.Media.DISPLAY_NAME,
+            MediaStore.Images.Media.DATE_ADDED,
+            MediaStore.Images.Media.MIME_TYPE};
+
+    private static final Uri URI = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
+
     /**
      * 从SDCard加载图片
      *
-     * @param context
-     * @param callback
+     * @param context context
+     * @return Flowable
      */
-    public static void loadImageForSDCard(final Context context, final DataCallback callback) {
-        //由于扫描图片是耗时的操作，所以要在子线程处理。
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                //扫描图片
-                Uri mImageUri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
-                ContentResolver mContentResolver = context.getContentResolver();
-
-                Cursor mCursor = mContentResolver.query(mImageUri, new String[]{
-                                MediaStore.Images.Media.DATA,
-                                MediaStore.Images.Media.DISPLAY_NAME,
-                                MediaStore.Images.Media.DATE_ADDED,
-                                MediaStore.Images.Media._ID,
-                                MediaStore.Images.Media.MIME_TYPE},
-                        null,
-                        null,
-                        MediaStore.Images.Media.DATE_ADDED);
-
-                ArrayList<ImageEntity> images = new ArrayList<>();
-
-                //读取扫描到的图片
-                if (mCursor != null) {
-                    while (mCursor.moveToNext()) {
-                        // 获取图片的路径
-                        String path = mCursor.getString(
-                                mCursor.getColumnIndex(MediaStore.Images.Media.DATA));
-                        //获取图片名称
-                        String name = mCursor.getString(
-                                mCursor.getColumnIndex(MediaStore.Images.Media.DISPLAY_NAME));
-                        //获取图片时间
-                        long time = mCursor.getLong(
-                                mCursor.getColumnIndex(MediaStore.Images.Media.DATE_ADDED));
-
-                        //获取图片类型
-                        String mimeType = mCursor.getString(
-                                mCursor.getColumnIndex(MediaStore.Images.Media.MIME_TYPE));
-
-                        //过滤未下载完成或者不存在的文件
-                        if (!"downloading".equals(getExtensionName(path)) && checkImgExists(path)) {
-                            images.add(new ImageEntity(path, time, name, mimeType));
-                        }
-                    }
-                    mCursor.close();
-                }
-                Collections.reverse(images);
-                callback.onSuccess(splitFolder(images));
+    public Flowable<List<ImageEntity>> loadImage(final Context context) {
+        Flowable<List<ImageEntity>> result = Flowable.create(emitter -> {
+            Logger.d("start load images ...");
+            ContentResolver resolver = context.getContentResolver();
+            Cursor cursor = resolver.query(URI, PROJECTION, null, null, PROJECTION[2]);
+            if (cursor == null) {
+                Logger.d("cursor == null");
+                emitter.onError(new RuntimeException("cursor == null, check the uri please."));
+                return;
             }
-        }).start();
+            List<ImageEntity> images = new ArrayList<>();
+            while (cursor.moveToNext()) {
+                // 获取图片的路径
+                String path = cursor.getString(cursor.getColumnIndex(PROJECTION[0]));
+                //获取图片名称
+                String name = cursor.getString(cursor.getColumnIndex(PROJECTION[1]));
+                //获取图片时间
+                long time = cursor.getLong(cursor.getColumnIndex(PROJECTION[2]));
+                //获取图片类型
+                String mimeType = cursor.getString(cursor.getColumnIndex(PROJECTION[3]));
+                Logger.d(name);
+                images.add(new ImageEntity(path, time, name, mimeType));
+            }
+            cursor.close();
+            Collections.reverse(images);
+            emitter.onNext(images);
+            Logger.d(images.toString());
+        }, BackpressureStrategy.BUFFER);
+
+        return result;
     }
 
     /**
      * 检查图片是否存在。ContentResolver查询处理的数据有可能文件路径并不存在。
      *
-     * @param filePath
-     * @return
+     * @param filePath filePath
+     * @return if true exists
      */
     private static boolean checkImgExists(String filePath) {
         return new File(filePath).exists();

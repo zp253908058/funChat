@@ -53,6 +53,7 @@
     <string name="tip_fun_chat_account">趣聊号:</string>
 
     <string name="tip_update_nickname">好的名字可以让你的朋友更容易记住你</string>
+    <string name="tip_login">登录中…</string>
 
     <string name="rationale_storage">我们将获取手机存储权限，这个权限仅用于获取手机的照片。</string>
     <string name="rationale_permissions_denied">权限被拒绝后将无法正常使用该功能，是否打开设置界面修改权限?</string>

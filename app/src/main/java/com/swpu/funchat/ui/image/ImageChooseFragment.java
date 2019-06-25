@@ -1,7 +1,9 @@
 package com.swpu.funchat.ui.image;
 
 import android.Manifest;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -12,8 +14,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.swpu.funchat.R;
 import com.swpu.funchat.base.NavigationFragment;
 import com.swpu.funchat.ui.image.adapter.FolderAdapter;
@@ -31,7 +35,7 @@ import pub.devrel.easypermissions.EasyPermissions;
  * @see ImageChooseFragment
  * @since 2019-05-10
  */
-public class ImageChooseFragment extends NavigationFragment implements EasyPermissions.PermissionCallbacks {
+public class ImageChooseFragment extends NavigationFragment {
 
     private static String[] mPermissions = {Manifest.permission.READ_EXTERNAL_STORAGE};
 
@@ -39,7 +43,9 @@ public class ImageChooseFragment extends NavigationFragment implements EasyPermi
 
     private ImageViewModel mImageViewModel;
     private ImageAdapter mImageAdapter;
-    private FolderAdapter mFolderAdapter;
+    private FolderAdapter mFolderAdapter = new FolderAdapter();
+
+    private BottomSheetDialog mBottomSheetDialog;
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -95,7 +101,6 @@ public class ImageChooseFragment extends NavigationFragment implements EasyPermi
     @Override
     protected void initView() {
         mImageAdapter = new ImageAdapter();
-        mFolderAdapter = new FolderAdapter();
         RecyclerView recyclerView = findViewById(R.id.image_recycler_view);
         recyclerView.setLayoutManager(new GridLayoutManager(requireContext(), 3));
         recyclerView.setAdapter(mImageAdapter);
@@ -104,11 +109,24 @@ public class ImageChooseFragment extends NavigationFragment implements EasyPermi
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mImageViewModel.getImageObservable().observe(this, folderEntities -> mFolderAdapter.setItems(folderEntities));
+        mImageViewModel.getImageObservable().observe(this, images -> mImageAdapter.setItems(images));
     }
 
     private void showFolder() {
+        if (mBottomSheetDialog == null) {
+            mBottomSheetDialog = new BottomSheetDialog(requireContext());
+            mBottomSheetDialog.setContentView(R.layout.part_image_folder);
+            RecyclerView recyclerView = mBottomSheetDialog.findViewById(R.id.recycler_view);
+            if (recyclerView != null) {
+                recyclerView.setAdapter(mFolderAdapter);
+                recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
+            }
 
+        }
+        mBottomSheetDialog.show();
+    }
+
+    private void onCancel(DialogInterface dialog) {
     }
 
     private void startLoadImage() {

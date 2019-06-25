@@ -3,6 +3,7 @@ package com.swpu.funchat.model;
 import com.swpu.funchat.util.Validator;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Class description:
@@ -14,13 +15,13 @@ import java.util.ArrayList;
  */
 public class FolderEntity {
     private String name;
-    private ArrayList<ImageEntity> images;
+    private List<ImageEntity> images;
 
     public FolderEntity(String name) {
         this.name = name;
     }
 
-    public FolderEntity(String name, ArrayList<ImageEntity> images) {
+    public FolderEntity(String name, List<ImageEntity> images) {
         this.name = name;
         this.images = images;
     }
@@ -33,7 +34,7 @@ public class FolderEntity {
         this.name = name;
     }
 
-    public ArrayList<ImageEntity> getImages() {
+    public List<ImageEntity> getImages() {
         return images;
     }
 

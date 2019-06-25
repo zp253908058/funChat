@@ -56,4 +56,14 @@ public class ImageEntity {
     public boolean isGif() {
         return "image/gif".equals(mimeType);
     }
+
+    @Override
+    public String toString() {
+        return "ImageEntity{" +
+                "path='" + path + '\'' +
+                ", time=" + time +
+                ", name='" + name + '\'' +
+                ", mimeType='" + mimeType + '\'' +
+                '}';
+    }
 }

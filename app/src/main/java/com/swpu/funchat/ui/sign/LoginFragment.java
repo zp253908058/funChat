@@ -2,6 +2,7 @@ package com.swpu.funchat.ui.sign;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 
@@ -43,7 +44,12 @@ public class LoginFragment extends NavigationFragment implements View.OnClickLis
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mSignViewModel = ViewModelProviders.of(requireActivity()).get(SignViewModel.class);
-        mSignViewModel.addOnResponseListener(SignViewModel.KEY_LOGIN_RESPONSE_LISTENER, this::loginSuccess);
+        mSignViewModel.addOnResponseListener(SignViewModel.KEY_LOGIN_RESPONSE_LISTENER, ()->{
+            loginSuccess();
+            Button loginButton = findViewById(R.id.login_button);
+            loginButton.setText(R.string.text_login);
+            loginButton.setEnabled(true);
+        });
     }
 
     @Override
@@ -88,9 +94,6 @@ public class LoginFragment extends NavigationFragment implements View.OnClickLis
 
         boolean success = mManager.load(requireContext(), mEntity);
 
-        Logger.d(success);
-        Logger.d(mEntity);
-
         if (success) {
             mUsernameText.setText(mEntity.getUsername());
             mPasswordText.setText(mEntity.getPassword());
@@ -134,6 +137,9 @@ public class LoginFragment extends NavigationFragment implements View.OnClickLis
         mEntity.setUsername(username);
         mEntity.setPassword(password);
 
+        Button loginButton = findViewById(R.id.login_button);
+        loginButton.setText(R.string.tip_login);
+        loginButton.setEnabled(false);
         mSignViewModel.login(username, password);
     }
 
