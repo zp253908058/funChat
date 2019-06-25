@@ -14,7 +14,7 @@ import androidx.navigation.NavOptions;
 import androidx.navigation.Navigation;
 import androidx.navigation.Navigator;
 
-public abstract class NavigationFragment extends BaseFragment {
+public abstract class NavigationFragment extends PermissionsFragment {
 
     private NavController mNavController;
 
@@ -23,6 +23,11 @@ public abstract class NavigationFragment extends BaseFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mNavController = Navigation.findNavController(view);
+    }
+
+    @Override
+    protected void onBackPressed() {
+        mNavController.navigateUp();
     }
 
     protected NavController getNavController() {

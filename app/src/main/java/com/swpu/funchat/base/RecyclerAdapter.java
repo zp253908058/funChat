@@ -34,6 +34,13 @@ public abstract class RecyclerAdapter<T> extends RecyclerView.Adapter<RecyclerVi
 
     /**
      * the constructor of this class.
+     */
+    public RecyclerAdapter() {
+        this(null);
+    }
+
+    /**
+     * the constructor of this class.
      *
      * @param items the data source.
      */

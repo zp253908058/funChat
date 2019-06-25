@@ -104,4 +104,6 @@ dependencies {
 
     //日志
     implementation 'com.orhanobut:logger:2.2.0'
+    //权限检查工具
+    implementation 'pub.devrel:easypermissions:3.0.0'
 }

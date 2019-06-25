@@ -126,9 +126,9 @@
 
     <fragment
         android:id="@+id/avatarChooseFragment"
-        android:name="com.swpu.funchat.ui.user.AvatarChooseFragment"
+        android:name="com.swpu.funchat.ui.image.ImageChooseFragment"
         android:label="@string/title_picture"
-        tools:layout="@layout/fragment_avatar_choose" />
+        tools:layout="@layout/fragment_image_choose" />
 
     <fragment
         android:id="@+id/updateNicknameFragment"

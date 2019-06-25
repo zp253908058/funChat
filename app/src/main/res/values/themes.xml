@@ -30,6 +30,13 @@
         <item name="android:statusBarColor">@android:color/transparent</item>
         <!--Toolbar Navigation padding-->
         <item name="toolbarNavigationButtonStyle">@style/ToolbarButtonNavigation</item>
+
+        <item name="alertDialogTheme">@style/DialogTheme</item>
+
+        <!--item RadioButton or CheckBox color-->
+        <item name="colorControlNormal">@color/colorControlNormal</item>
+        <!--item RadioButton or CheckBox checked color-->
+        <item name="colorControlActivated">@color/colorControlActivated</item>
     </style>
 
     <style name="OptionsMenuStyle" parent="Widget.AppCompat.PopupMenu">
@@ -49,5 +56,19 @@
         <!--<item name="android:background">@mipmap/background_splash</item>-->
     </style>
 
+    <style name="DialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <!--buttons color-->
+        <item name="colorAccent">@color/colorAccent</item>
+        <!--title and message color-->
+        <item name="android:textColorPrimary">@color/text_color</item>
+        <!--dialog background-->
+        <!--<item name="android:windowBackground">@drawable/background_dialog</item>-->
 
+        <!--item RadioButton or CheckBox color-->
+        <item name="colorControlNormal">@color/colorControlNormal</item>
+        <!--item RadioButton or CheckBox checked color-->
+        <item name="colorControlActivated">@color/colorControlActivated</item>
+        <!--item text color-->
+        <item name="textColorAlertDialogListItem">@color/colorAccent</item>
+    </style>
 </resources>
