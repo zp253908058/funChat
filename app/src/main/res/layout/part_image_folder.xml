@@ -5,6 +5,13 @@
     android:background="@color/colorAccent"
     android:orientation="vertical">
 
-    <include layout="@layout/common_recycler_view" />
+    <ListView
+        android:id="@+id/image_folder_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:choiceMode="singleChoice"
+        android:divider="@drawable/shape_divider"
+        android:dividerHeight="@dimen/divider_height"
+        android:scrollbars="none" />
 
 </LinearLayout>

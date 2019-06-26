@@ -1,7 +1,6 @@
 package com.swpu.funchat.ui.image;
 
 import android.Manifest;
-import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -13,7 +12,6 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProviders;
-import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -25,8 +23,6 @@ import com.swpu.funchat.base.NavigationFragment;
 import com.swpu.funchat.ui.image.adapter.FolderAdapter;
 import com.swpu.funchat.ui.image.adapter.ImageAdapter;
 import com.swpu.funchat.vm.ImageViewModel;
-
-import pub.devrel.easypermissions.EasyPermissions;
 
 /**
  * Class description:
