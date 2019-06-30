@@ -5,7 +5,6 @@ import android.os.Handler;
 import android.view.View;
 
 import com.swpu.funchat.base.BaseActivity;
-import com.swpu.funchat.ui.NavigationActivity;
 import com.swpu.funchat.ui.sign.activity.LoginNavigationActivity;
 
 /**

@@ -8,12 +8,12 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
@@ -115,10 +115,9 @@ public class ImageChooseFragment extends NavigationFragment {
         if (mBottomSheetDialog == null) {
             mBottomSheetDialog = new BottomSheetDialog(requireContext());
             mBottomSheetDialog.setContentView(R.layout.part_image_folder);
-            RecyclerView recyclerView = mBottomSheetDialog.findViewById(R.id.recycler_view);
-            if (recyclerView != null) {
-                recyclerView.setAdapter(mFolderAdapter);
-                recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
+            ListView listView = mBottomSheetDialog.findViewById(R.id.image_folder_list);
+            if (listView != null) {
+                listView.setAdapter(mFolderAdapter);
             }
 
         }
@@ -126,6 +125,7 @@ public class ImageChooseFragment extends NavigationFragment {
     }
 
     private void onCancel(DialogInterface dialog) {
+
     }
 
     private void startLoadImage() {

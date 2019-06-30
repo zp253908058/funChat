@@ -11,7 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.swpu.funchat.R;
-import com.swpu.funchat.base.BaseFragment;
 import com.swpu.funchat.base.NavigationFragment;
 import com.swpu.funchat.model.ContactEntity;
 

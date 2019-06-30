@@ -60,5 +60,7 @@
     <string name="rationale_title">请求权限</string>
     <string name="rationale_ask_ok">确定</string>
     <string name="rationale_ask_cancel">取消</string>
+    <string name="text_all">全部</string>
+    <string name="text_image_num">%d张</string>
 
 </resources>

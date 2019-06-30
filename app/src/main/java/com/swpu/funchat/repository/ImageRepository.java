@@ -12,16 +12,12 @@ import com.swpu.funchat.util.Logger;
 import com.swpu.funchat.util.Validator;
 
 import java.io.File;
-import java.net.URI;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
 import io.reactivex.BackpressureStrategy;
 import io.reactivex.Flowable;
-import io.reactivex.FlowableEmitter;
-import io.reactivex.FlowableOnSubscribe;
 
 /**
  * Class description:

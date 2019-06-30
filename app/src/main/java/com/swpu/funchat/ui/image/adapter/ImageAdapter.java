@@ -1,7 +1,5 @@
 package com.swpu.funchat.ui.image.adapter;
 
-import android.net.Uri;
-import android.provider.Settings;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;

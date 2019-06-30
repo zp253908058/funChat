@@ -16,7 +16,6 @@ import com.swpu.funchat.base.NavigationFragment;
 import com.swpu.funchat.datasource.cache.UserService;
 import com.swpu.funchat.datasource.storage.preference.SharedPreferenceManager;
 import com.swpu.funchat.datasource.storage.preference.dto.AccountPreference;
-import com.swpu.funchat.util.Logger;
 import com.swpu.funchat.util.Validator;
 import com.swpu.funchat.vm.SignViewModel;
 

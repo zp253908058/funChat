@@ -1,8 +1,5 @@
 package com.swpu.funchat.ui.image.adapter;
 
-import android.widget.ImageView;
-import android.widget.TextView;
-
 import com.swpu.funchat.R;
 import com.swpu.funchat.base.ListBaseAdapter;
 import com.swpu.funchat.base.ViewHolder;
@@ -21,8 +18,6 @@ public class FolderAdapter extends ListBaseAdapter<FolderEntity> {
 
     @Override
     protected void obtainData(ViewHolder holder, int position, FolderEntity item) {
-        TextView name = holder.get(R.id.folder_name);
-        ImageView image = holder.get(R.id.folder_image);
         if (item != null) {
 
         }
